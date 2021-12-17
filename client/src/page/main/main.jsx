@@ -8,6 +8,7 @@ import Rating from '../../component/rating/rating';
 import LanguageBarList from '../../component/language_bar_list/languageBarList';
 import { AiFillFire } from 'react-icons/ai';
 import { FaCalendarCheck } from 'react-icons/fa';
+import ShowByDate from '../../component/show_studies/show_by_date/showByDate';
 
 const Main = () => {
     return (
@@ -58,6 +59,7 @@ const Main = () => {
                                 </label>
                             </div>
                         </div>
+                        <ShowByDate/>
                         {/* {category === SHOW_BY_DATE ? (
                             <ShowByDate checked={checked} />
                         ) : (
