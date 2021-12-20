@@ -1,39 +1,12 @@
 import React, { useCallback } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import {
-//   addLanguage,
-//   clearLanguage,
-//   initLanguage,
-//   removeLanguage,
-// } from 'store/language';
-import LanguageBarItem from '../language_bar_item/languageBarItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { addLanguage, clearLanguage, initLanguage, removeLanguage } from '../../store/language';
+import LanguageBarItem from '../language_bar_item/languageBarItem'
 import styles from './languageBarList.module.css';
 
 const LanguageBarList = React.memo(() => {
-//   const selectedLanguage = useSelector((state) => state.language);
-
-  // useEffect(() => {
-  //   setChecked(selectedLanguage.length === 14);
-  // }, [selectedLanguage.length, setChecked]);
-
-//   const dispatch = useDispatch();
-  const onItemClick = useCallback(
-    (Langauge, selected) => {
-//       if (selectedLanguage.length === 14) {
-//         dispatch(clearLanguage());
-//         dispatch(addLanguage(Langauge));
-//       } else if (selectedLanguage.length === 1) {
-//         if (!selected) dispatch(addLanguage(Langauge));
-//         else dispatch(initLanguage());
-//       } else {
-//         if (!selected) dispatch(addLanguage(Langauge));
-//         else dispatch(removeLanguage(Langauge));
-alert(Langauge);
-      }
-    // },
-    // [dispatch, selectedLanguage.length]
-  );
-
+  const selectedLanguage = useSelector((state) => state.language);
+  const dispatch = useDispatch();
   const languages = [
     'javascript',
     'typescript',
@@ -51,15 +24,30 @@ alert(Langauge);
     'swift',
   ];
 
-  //console.log(selectedLanguage);
+  const onItemClick = useCallback(
+    (Langauge, selected) => {
+      if (selectedLanguage.length === languages.length) {
+        dispatch(clearLanguage());
+        dispatch(addLanguage(Langauge));
+      } else if (selectedLanguage.length === 1) {
+        if (!selected) dispatch(addLanguage(Langauge));
+        else dispatch(initLanguage());
+      } else {
+        if (!selected) dispatch(addLanguage(Langauge));
+        else dispatch(removeLanguage(Langauge));
+      }
+    },
+    [dispatch, selectedLanguage.length]
+  );
+
   return (
     <ul className={styles.languageList}>
       {languages.map((language, i) => {
-        // let selected = selectedLanguage.includes(language);
+        let selected = selectedLanguage.includes(language);
         return (
           <LanguageBarItem
             Language={language}
-            // selected={selected}
+            selected={selected}
             onItemClick={onItemClick}
             key={i}
           ></LanguageBarItem>

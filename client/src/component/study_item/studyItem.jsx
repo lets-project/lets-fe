@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./studyItem.module.css";
-// import Modal from "component/modal/modal_component/modal";
-// import PostModal from "component/modal/post_modal/postModal";
-// import { useHistory } from "react-router-dom";
 import { FaRegCommentDots, FaRegEye } from "react-icons/fa";
 
-const StudyItem = ({ study, lastStudyElementRef }) => {
+const StudyItem = ({ study }) => {
   const studyLang = [];
-//   const history = useHistory();
   const displayType = study.isClosed ? styles.closed : styles.open;
 
   for (let i = 0; i < 3; i++) {
@@ -16,23 +12,15 @@ const StudyItem = ({ study, lastStudyElementRef }) => {
     else studyLang.push(study.language[i]);
   }
 
-//   const [modalVisible, setModalVisible] = useState(false);
-
-//   const onClick = () => {
-//     history.push(`/study/${study._id}`);
-//     // console.log(study);
-//   };
-//   const closeModal = () => {
-//     document.body.style.overflow = "auto";
-//     setModalVisible(false);
-//   };
+  const onClick = () => {
+    alert('세부 페이지 구현 예정');
+  };
 
   return (
     <>
       <li
-        ref={lastStudyElementRef ? lastStudyElementRef : null}
         className={`${styles.studyItem} ${displayType}`}
-        // onClick={onClick}
+        onClick={onClick}
       >
         <h1 className={styles.title}>{study.title}</h1>
         <ul className={styles.content}>
@@ -66,20 +54,12 @@ const StudyItem = ({ study, lastStudyElementRef }) => {
               src="/images/info/heart_filled.png"
               alt="likes"
             />
-            {/* <p>{study.totalLikes}</p> */}
+            <p>{study.totalLikes}</p>
           </div>
         </section>
-        {/* {study.isClosed && <div className={styles.closeNotice}>모집 완료</div>} */}
+        {study.isClosed && <div className={styles.closeNotice}>모집 완료</div>}
       </li>
-      {/* {modalVisible && (
-        <Modal visible={modalVisible} onClose={closeModal}>
-          <PostModal
-            study={study}
-            handleClose={closeModal}
-            tabIndex={0}
-          ></PostModal>
-        </Modal>
-      )} */}
+      {/*스터디 Modal*/}
     </>
   );
 };
