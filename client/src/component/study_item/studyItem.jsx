@@ -1,5 +1,6 @@
-import React from "react";
+import React , {useState} from "react";
 import styles from "./studyItem.module.css";
+// import { useHistory } from "react-router-dom";
 import { FaRegCommentDots, FaRegEye } from "react-icons/fa";
 
 const StudyItem = ({ study }) => {
@@ -12,8 +13,15 @@ const StudyItem = ({ study }) => {
     else studyLang.push(study.language[i]);
   }
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   const onClick = () => {
-    alert('세부 페이지 구현 예정');
+    // history.push(`/study/${study._id}`);
+  };
+  
+  const closeModal = () => {
+    document.body.style.overflow = "auto";
+    setModalVisible(false);
   };
 
   return (
@@ -59,7 +67,15 @@ const StudyItem = ({ study }) => {
         </section>
         {study.isClosed && <div className={styles.closeNotice}>모집 완료</div>}
       </li>
-      {/*스터디 Modal*/}
+      {modalVisible && (
+        <Modal visible={modalVisible} onClose={closeModal}>
+          <PostModal
+            study={study}
+            handleClose={closeModal}
+            tabIndex={0}
+          ></PostModal>
+        </Modal>
+      )}
     </>
   );
 };
