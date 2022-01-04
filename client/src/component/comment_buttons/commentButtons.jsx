@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CancelButton from "../cancelButton/cancelButton";
+import CancelButton from "../cancel_button/cancelButton";
 import Modal from "../modal/modal_component/modal";
 import styles from "./commentButtons.module.css";
 

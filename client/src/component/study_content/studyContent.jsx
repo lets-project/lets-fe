@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router-dom";
-import { formatDate } from "common/utils";
+import { formatDate } from "../../common/utils";
 import CommentContainer from "../comment_container/commentContainer";
 import LikesAndViews from "../likes_and_views/likesAndViews";
-import studyService from "service/study_service";
-import { setPost } from "store/write";
+import studyService from "../../service/study_service";
+// import { setPost } from "../../store/write";
 import StudyButtons from "../study_buttons/studyButtons";
 import styles from "./studyContent.module.css";
 import { FaArrowLeft } from "react-icons/fa";
@@ -50,7 +50,7 @@ const StudyContent = ({ id }) => {
   };
 
   const handleEdit = (dispatch, history) => {
-    dispatch(setPost(read.post));
+    // dispatch(setPost(read.post));
     // history.push("/register");
   };
 
@@ -85,7 +85,7 @@ const StudyContent = ({ id }) => {
         </div>
         {user.nickName === read.post.nickname && (
           <StudyButtons
-            history={history}
+            // history={history}
             dispatch={dispatch}
             handleEdit={handleEdit}
             handleDelete={() => handleDelete(id)}

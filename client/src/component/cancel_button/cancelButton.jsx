@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./cancelButton.module.css";
 
 const CancelButton = ({
     onPublish,

@@ -67,15 +67,7 @@ const StudyItem = ({ study }) => {
         </section>
         {study.isClosed && <div className={styles.closeNotice}>모집 완료</div>}
       </li>
-      {modalVisible && (
-        <Modal visible={modalVisible} onClose={closeModal}>
-          <PostModal
-            study={study}
-            handleClose={closeModal}
-            tabIndex={0}
-          ></PostModal>
-        </Modal>
-      )}
+     
     </>
   );
 };
