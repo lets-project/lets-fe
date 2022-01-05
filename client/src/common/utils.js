@@ -25,4 +25,13 @@ const getFormatedToday = (standardDate) => {
   
     return [year, month, day].join("-");
   };
-  
+
+const isBase64 = (str) => {
+  try {
+    return str.substring(0, 5) === "data:" ? true : false;
+  } catch (err) {
+    return false;
+  }
+};
+
+export { getFormatedToday, isBase64, formatDate };

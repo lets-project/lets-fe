@@ -1,10 +1,13 @@
 import React , {useState} from "react";
 import styles from "./studyItem.module.css";
-// import { useHistory } from "react-router-dom";
+import Modal from "../modal/modal_component/modal";
+import PostModal from "../modal/post_modal/postModal";
+import { useNavigate } from "react-router-dom";
 import { FaRegCommentDots, FaRegEye } from "react-icons/fa";
 
 const StudyItem = ({ study }) => {
   const studyLang = [];
+  const navigate = useNavigate();
   const displayType = study.isClosed ? styles.closed : styles.open;
 
   for (let i = 0; i < 3; i++) {
@@ -16,9 +19,8 @@ const StudyItem = ({ study }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const onClick = () => {
-    // history.push(`/study/${study._id}`);
+    navigate(`/study/${study._id}`);
   };
-  
   const closeModal = () => {
     document.body.style.overflow = "auto";
     setModalVisible(false);
@@ -67,7 +69,15 @@ const StudyItem = ({ study }) => {
         </section>
         {study.isClosed && <div className={styles.closeNotice}>모집 완료</div>}
       </li>
-     
+      {/* {modalVisible && (
+        <Modal visible={modalVisible} onClose={closeModal}>
+          <PostModal
+            study={study}
+            handleClose={closeModal}
+            tabIndex={0}
+          ></PostModal>
+        </Modal>
+      )} */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../common/utils";
 import CommentContainer from "../comment_container/commentContainer";
 import LikesAndViews from "../likes_and_views/likesAndViews";
@@ -30,10 +30,20 @@ const LangItem = ({ Language }) => {
 };
 
 const StudyContent = ({ id }) => {
-  // const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-  const read = useSelector((state) => state.read);
+  // const user = useSelector((state) => state.user);
+  const user = {id : 'test ID',
+                nickName: "test Nic"};
+  // const read = useSelector((state) => state.read);
+  const read = {
+      post : {
+        title: "sample title",
+        nickname: "sample nick",
+        createdAt: "2021.01.05",
+        language: ["React", "Vue"],
+      }
+  }
 
   const handleDelete = async (id) => {
     await studyService.deleteStudy(id);
@@ -42,7 +52,7 @@ const StudyContent = ({ id }) => {
       position: "top-right",
       autoClose: 3000,
     });
-    // history.push("/");
+    navigate("/");
   };
 
   const handleEnd = async (editValue) => {
@@ -51,11 +61,11 @@ const StudyContent = ({ id }) => {
 
   const handleEdit = (dispatch, history) => {
     // dispatch(setPost(read.post));
-    // history.push("/register");
+    navigate("/register");
   };
 
   const handleBack = () => {
-    // history.goBack();
+    navigate(-1);
   };
   const defaultPath =
     "https://hola-post-image.s3.ap-northeast-2.amazonaws.com/";
@@ -80,7 +90,7 @@ const StudyContent = ({ id }) => {
             <div className={styles.userName}>{read.post.nickname}</div>
           </div>
           <div className={styles.registeredDate}>
-            {formatDate(read.post.createdAt)}
+            {/* {formatDate(read.post.createdAt)} */}
           </div>
         </div>
         {user.nickName === read.post.nickname && (

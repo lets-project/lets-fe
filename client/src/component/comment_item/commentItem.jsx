@@ -7,7 +7,10 @@ import { getFormatedToday } from "../../common/utils.js";
 import CommentButtons from "../comment_buttons/commentButtons";
 
 const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {
-  const user = useSelector((state) => state.user);
+  console.log("TEST");
+  console.log(comment.createdAt);
+  // const user = useSelector((state) => state.user);
+  const user = {nickName: "test"}
   const [content, setContent] = useState(comment.content);
   //const [preContent, setPreContent] = useState(comment.content);
   const preContent = comment.content;

@@ -8,7 +8,8 @@ const CommentContainer = ({ id }) => {
   const [commentList, setCommentList] = useState([]);
   const [content, setContent] = useState("");
   const [isComplete, setIsComplete] = useState(false); // useEffect 발생용 state
-  const userId = useSelector((state) => state.user.id);
+  // const userId = useSelector((state) => state.user.id);
+  const userId = "testId";
 
   // 댓글 등록 버튼
   const onRegisterClick = async (e) => {
@@ -22,6 +23,7 @@ const CommentContainer = ({ id }) => {
 
   useEffect(() => {
     studyService.getComments(id).then((response) => {
+      console.log(response);
       setCommentList(response.data.comments);
     });
   }, [id, isComplete]);

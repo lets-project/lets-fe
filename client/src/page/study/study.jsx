@@ -23,13 +23,15 @@ const Study = () => {
   return (
     <>
       <Navbar />
-      {read.loading === "idle" ? (
+      {/* {read.loading === "idle" ? (
         <Modal visible={true} name="loading">
-          {/* <LoadingSpinner /> */}
+          <LoadingSpinner />
         </Modal>
       ) : (
         <StudyContent id={studyId} />
-      )}
+      )} */}
+        <StudyContent id={studyId} />
+
     </>
   );
 };
