@@ -1,3 +1,11 @@
+#Project 
+
+스터디, 사이드 프로젝트 팀원을 구하는 웹 페이지
+
+https://github.com/tmkimm/hola
+
+https://documenter.getpostman.com/view/12851774/TVzSiwv1#hola-rest-api
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +76,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
