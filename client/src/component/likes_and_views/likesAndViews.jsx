@@ -52,15 +52,13 @@ const LikesAndViews = ({ views, studyId, userId }) => {
     }
 
     if (likeImg === "heart_filled") {
-      // const response = await studyService.deleteLikes(studyId);
-      // setLikeImg("heart_unfilled");
-      // setTotalLikes(response.data.likeUsers.length);
-      // todo like 동작 구현
+      const response = await studyService.deleteLikes(studyId);
+      setLikeImg("heart_unfilled");
+      setTotalLikes(response.data.likeUsers.length);
     } else {
-      // const response = await studyService.addLikes(studyId);
-      // setTotalLikes(response.data.likeUsers.length);
-      // setLikeImg("heart_filled");
-      // todo like 동작 구현
+      const response = await studyService.addLikes(studyId);
+      setTotalLikes(response.data.likeUsers.length);
+      setLikeImg("heart_filled");
     }
   };
 
