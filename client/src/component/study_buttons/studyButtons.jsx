@@ -3,6 +3,8 @@ import styles from "./studyButtons.module.css";
 import Modal from "../modal/modal_component/modal";
 import CancelButton from "../cancel_button/cancelButton";
 
+// todo 나중에 데이터 받아오는 것 확인 / Portal 에러 수정하고나서 Modal로 창 띄워지는 것 확인
+
 const StudyButtons = ({
   navigate,
   dispatch,
@@ -43,7 +45,7 @@ const StudyButtons = ({
         <button onClick={() => openModal("deleteModal")}>삭제</button>
       </section>
 
-      <Modal visible={showPopup} onClose={closeModal}>
+      {/* <Modal visible={showPopup} onClose={closeModal}> */}
         {isDeleteButton ? (
           <CancelButton
             confirmMsg="작성하신 글을 삭제 하시겠어요?"
@@ -65,7 +67,7 @@ const StudyButtons = ({
             onPublish={handleStudy}
           ></CancelButton>
         )}
-      </Modal>
+      {/* </Modal> */}
     </>
   );
 };

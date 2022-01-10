@@ -11,6 +11,8 @@ import styles from "./studyContent.module.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { toast } from "react-toastify";
 
+// todo data 받아오고 formatDate 잘 출력되는지 확인
+
 const StudyLanguage = ({ languages }) => {
   const usedLanguage = languages;
   return (

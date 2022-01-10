@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 /*
 
 User가 최근 읽은 글 및 좋아요 한 글을 볼 수 있는 page입니다.
-component rendering시 useEffect를 통해 render할 post list를 받아옵니다.
 
 */
 

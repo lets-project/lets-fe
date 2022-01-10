@@ -29,7 +29,7 @@ const LikesAndViews = ({ views, studyId, userId }) => {
       }
     });
   }, [studyId, userId]);
-
+// todo login modal
 //   const modalVisible = useSelector((state) => state.loginStep.modalVisible); 로그인이 필요한지 store에서 가져옴
   // const [modalVisible, setModalVisible] = useState(false);
 

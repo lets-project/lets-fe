@@ -8,8 +8,8 @@ const ShowByDate = () => {
   const [pageNumber, setPageNumber] = useState(0);
 
   const observer = useRef();
-
-  // const { studyList, hasMore, loading } = useStudySearch(
+ // todo 나중에 데이터 받아오는 것 확인
+  // const { studyList, hasMore, loading } = useStudySearch( 
   //   SHOW_BY_DATE,
   //   pageNumber,
   //   setPageNumber,

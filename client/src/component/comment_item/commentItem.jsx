@@ -3,17 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./commentItem.module.css";
 import studyService from "../../service/study_service";
 import { getFormatedToday } from "../../common/utils.js";
-// import { fetchUserByRefreshToken } from "store/user";
 import CommentButtons from "../comment_buttons/commentButtons";
 
 const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {
-  console.log("TEST");
-  console.log(comment.createdAt);
   // const user = useSelector((state) => state.user);
   const user = {nickName: "test"}
   const [content, setContent] = useState(comment.content);
-  //const [preContent, setPreContent] = useState(comment.content);
-  const preContent = comment.content;
+  const [preContent, setPreContent] = useState(comment.content);
   const [inputVisible, setInputVisible] = useState(false); // 댓글 입력 여부
   const defaultImage =
     "https://media.vlpt.us/images/seeh_h/profile/6b7bfde5-b67c-4665-a2e1-a308e8de2059/tt.PNG?w=120";
@@ -39,7 +35,7 @@ const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {
       content,
     });
     if (response === 401) {
-      // dispatch(fetchUserByRefreshToken());
+      // refresh token으로 access token 불러왔을때
       await studyService.modifyComment({ id: comment._id, content });
     }
     setInputVisible(false);
@@ -59,7 +55,7 @@ const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {
             className={styles.userImg}
             src={
               comment.author.image
-                ? `https://hola-post-image.s3.ap-northeast-2.amazonaws.com/${comment.author.image}`
+                ? `${comment.author.image}`
                 : defaultImage
             }
             alt="사용자 이미지"

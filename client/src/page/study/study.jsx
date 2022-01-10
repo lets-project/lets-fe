@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import Modal from "../../component/modal/modal_component/modal";
 import Navbar from "../../component/nav_bar/navbar";
 import StudyContent from "../../component/study_content/studyContent";
-// import { clearPost, readPost } from "store/read";
+// import { clearPost, readPost } from "../../store/read";
 
 const Study = () => {
   const location = useLocation();

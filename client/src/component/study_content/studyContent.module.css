@@ -24,6 +24,7 @@
   }
   
   .languageItem {
+    list-style-type: none;
     margin-right: 0.5rem;
     background: #dce2f0;
     border: 2px solid #dce2f0;

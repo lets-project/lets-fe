@@ -17,6 +17,7 @@ const Navbar = React.memo(() => {
     id : "TEST",
     nickName: "Test Nickname"
   }
+  // todo login modal
   // const modalVisible = useSelector((state) => state.loginStep.modalVisible); // Login Modal이 필요한지 가져옴.
   // const [modalVisible, setModalVisible] = useState(false);
   // const openModal = () => {
