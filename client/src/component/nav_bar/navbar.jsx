@@ -1,14 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./navbar.module.css";
 import logo from "../../logo.svg"
+import Modal from "../modal/modal_component/modal";
+
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+
+import { useState } from "react";
+
 const Navbar = React.memo(() => {
-  const openModal = () => {
-    document.body.style.overflow = "hidden";
-    alert("로그인 창 구현 예정");
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // const user = useSelector((state) => state.user); // 저장된 유저정보 가져옴
+  const user = {
+    id : "TEST",
+    nickName: "Test Nickname"
+  }
+  // const modalVisible = useSelector((state) => state.loginStep.modalVisible); // Login Modal이 필요한지 가져옴.
+  // const [modalVisible, setModalVisible] = useState(false);
+  // const openModal = () => {
+  //   document.body.style.overflow = "hidden";
+  //   dispatch(setModalVisible(true));
+  // };
+  // const closeModal = () => {
+  //   document.body.style.overflow = "auto";
+  //   dispatch(setModalVisible(false));
+  // }
   const handleRegister = () => {
-    alert("구현 예정");
+    if (user.id === undefined) {
+      //로그인 창 띄워줌
+    }
+    navigate("/register");
   };
+
+  useEffect(() => {
+    if (user.id) {
+        // User refresh token을 이용해서 유저정보 얻어옴
+          // navigate("/");
+          // dispatch(clearUser()); // 유저 초기화
+          // toast.error("로그인이 만료 되었어요!", {
+            // position: "top-right",
+            // autoClose: 3000,
+          // });
+        // }
+        // 실패했을때 에러처리 필요
+      // });
+    }
+  }, [dispatch, navigate, user.id]);
+
   return (
     <nav className={styles.navbar}>
       <a href="/">
@@ -22,11 +62,15 @@ const Navbar = React.memo(() => {
         <button className={styles.postRegister} onClick={handleRegister}>
           새 글 쓰기
         </button>
-          <button className={styles.login} onClick={openModal}>
+          <button className={styles.login}
+          //  onClick={openModal}
+           >
             로그인
           </button>
       </div>
-      {/* 로그인 모달 */}
+      {/* <Modal visible={modalVisible} name="login" onClose={closeModal}> */}
+        {/*로그인 컴포넌트 자리*/}
+      {/* </Modal> */}
     </nav>
   );
 });

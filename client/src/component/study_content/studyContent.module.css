@@ -171,6 +171,7 @@
       font-size: 1rem;
     }
     .languageItem {
+      list-style-type:none;
       margin-right: 0.25rem;
       background: #dce2f0;
       border: 2px solid #dce2f0;

@@ -4,7 +4,7 @@ import Modal from "../modal/modal_component/modal";
 import CancelButton from "../cancel_button/cancelButton";
 
 const StudyButtons = ({
-  history,
+  navigate,
   dispatch,
   handleEdit,
   handleDelete,
@@ -39,7 +39,7 @@ const StudyButtons = ({
         <button onClick={() => openModal("endModal")}>
           {close === true ? "마감 취소" : "마감"}
         </button>
-        <button onClick={() => handleEdit(dispatch, history)}>수정</button>
+        <button onClick={() => handleEdit(dispatch, navigate)}>수정</button>
         <button onClick={() => openModal("deleteModal")}>삭제</button>
       </section>
 

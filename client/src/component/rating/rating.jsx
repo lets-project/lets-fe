@@ -4,6 +4,9 @@ import ReactStars from "react-rating-stars-component";
 // import userService from "service/user_service";
 import { toast } from "react-toastify";
 
+// todo rating 일단 보류
+
+
 const Rating = React.memo(() => {
   const [showRating, setShowRating] = useState(false);
   const [rating, setRating] = useState(0);
@@ -52,18 +55,14 @@ const Rating = React.memo(() => {
               </svg>
             </div>
             <div className={styles.titleWrapper}>
-              <div className={styles.title}>Hola에 만족하셨나요?</div>
+              <div className={styles.title}>렛츠에 만족하셨나요?</div>
               <div className={styles.content}>
                 더 좋은 서비스를 위해, 평가를 남겨주세요!
               </div>
             </div>
           </header>
           <div className={styles.imgWrapper}>
-            <img
-              className={styles.imgLogo}
-              src={`/images/ratings/${imageName}.png`}
-              alt="default logo"
-            />
+           {/* 이미지 */}
           </div>
 
           <div className={styles.ratings}>

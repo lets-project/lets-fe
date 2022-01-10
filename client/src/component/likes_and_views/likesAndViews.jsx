@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import studyService from "../../service/study_service";
-// import { setModalVisible } from "store/loginStep";
+// import { setModalVisible } from "../../store/loginStep";
 // import LoginModal
-// import Modal from "../modal/modal_component/modal";
+import Modal from "../modal/modal_component/modal";
 import styles from "./likesAndViews.module.css";
 
 /* 
-
 좋아요수와 조회수를 보여주는 component입니다.
-
-To-do
-해당 글 id 던지면 좋아요 수와 views만 return 받을 수 있는 api 있으면 좋을 것 같음
-
-삭제 제대로 되고 있는지 확인 필요
-StudyContent에서 read, user redux 정보를 다 전달 받고 있는데, 
-이거 제대로 된 구조인지 생각필요
-
+todo
 */
 
 const LikesAndViews = ({ views, studyId, userId }) => {
@@ -38,34 +30,37 @@ const LikesAndViews = ({ views, studyId, userId }) => {
     });
   }, [studyId, userId]);
 
-//   const modalVisible = useSelector((state) => state.loginStep.modalVisible);
+//   const modalVisible = useSelector((state) => state.loginStep.modalVisible); 로그인이 필요한지 store에서 가져옴
+  // const [modalVisible, setModalVisible] = useState(false);
 
-//   const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-//   const openModal = () => {
-//     document.body.style.overflow = "hidden";
-//     dispatch(setModalVisible(true));
-//   };
+  // const openModal = () => {
+  //   document.body.style.overflow = "hidden"; // todo 모아서 처리 가능한지 확인..
+  //   dispatch(setModalVisible(true));
+  // };
 
-//   const closeModal = () => {
-//     document.body.style.overflow = "auto";
-//     dispatch(setModalVisible(false));
-//   };
+  // const closeModal = () => {
+  //   document.body.style.overflow = "auto";
+  //   dispatch(setModalVisible(false));
+  // };
 
   const handleLikesClick = async () => {
     if (userId === undefined) {
-    //   openModal();
+      // openModal(); // 로그인 창 띄워줌
       return;
     }
 
     if (likeImg === "heart_filled") {
-      const response = await studyService.deleteLikes(studyId);
-      setLikeImg("heart_unfilled");
-      setTotalLikes(response.data.likeUsers.length);
+      // const response = await studyService.deleteLikes(studyId);
+      // setLikeImg("heart_unfilled");
+      // setTotalLikes(response.data.likeUsers.length);
+      // todo like 동작 구현
     } else {
-      const response = await studyService.addLikes(studyId);
-      setTotalLikes(response.data.likeUsers.length);
-      setLikeImg("heart_filled");
+      // const response = await studyService.addLikes(studyId);
+      // setTotalLikes(response.data.likeUsers.length);
+      // setLikeImg("heart_filled");
+      // todo like 동작 구현
     }
   };
 
@@ -90,9 +85,9 @@ const LikesAndViews = ({ views, studyId, userId }) => {
           <p>{views}</p>
         </div>
       </section>
-      {/* <Modal visible={modalVisible} name="login" onClose={closeModal}>
-        <LoginModal handleClose={closeModal} tabIndex={0}></LoginModal>
-      </Modal> */}
+      {/* <Modal visible={modalVisible} name="login" onClose={closeModal}> */}
+        {/* 로그인 화면 구현 */}
+      {/* </Modal> */}
     </>
   );
 };

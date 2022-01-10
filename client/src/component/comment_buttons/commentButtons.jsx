@@ -22,7 +22,7 @@ const CommentButtons = ({ onModifyClick, onDeleteClick }) => {
         <button onClick={openModal}>삭제</button>
       </section>
 
-      <Modal visible={showPopup} onClose={closeModal}>
+      {/* <Modal visible={showPopup} onClose={closeModal}> */}
         <CancelButton
           confirmMsg="댓글을 삭제 하시겠어요?"
           positiveMsg="네, 삭제할래요"
@@ -30,7 +30,7 @@ const CommentButtons = ({ onModifyClick, onDeleteClick }) => {
           onPublish={onDeleteClick}
           onCancel={closeModal}
         ></CancelButton>
-      </Modal>
+      {/* </Modal> */}
     </>
   );
 };

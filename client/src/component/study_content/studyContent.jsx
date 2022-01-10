@@ -5,14 +5,14 @@ import { formatDate } from "../../common/utils";
 import CommentContainer from "../comment_container/commentContainer";
 import LikesAndViews from "../likes_and_views/likesAndViews";
 import studyService from "../../service/study_service";
-// import { setPost } from "../../store/write";
+import { setPost } from "../../store/write";
 import StudyButtons from "../study_buttons/studyButtons";
 import styles from "./studyContent.module.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 const StudyLanguage = ({ languages }) => {
-  const usedLanguage = languages.map((lang) => lang.value);
+  const usedLanguage = languages;
   return (
     <section className={styles.usedLanguageWrapper}>
       <div className={styles.usedLanguageInfo}>사용 언어 :</div>
@@ -59,16 +59,14 @@ const StudyContent = ({ id }) => {
     await studyService.editClose(id, editValue);
   };
 
-  const handleEdit = (dispatch, history) => {
-    // dispatch(setPost(read.post));
+  const handleEdit = (dispatch, navigate) => {
+    dispatch(setPost(read.post));
     navigate("/register");
   };
 
   const handleBack = () => {
     navigate(-1);
   };
-  const defaultPath =
-    "https://hola-post-image.s3.ap-northeast-2.amazonaws.com/";
 
   return (
     <div className={styles.wrapper}>
@@ -84,7 +82,7 @@ const StudyContent = ({ id }) => {
           <div className={styles.user}>
             <img
               className={styles.userImg}
-              src={defaultPath + read.post.imagePath}
+              src={read.post.imagePath}
               alt="userImg"
             />
             <div className={styles.userName}>{read.post.nickname}</div>
@@ -95,7 +93,7 @@ const StudyContent = ({ id }) => {
         </div>
         {user.nickName === read.post.nickname && (
           <StudyButtons
-            // history={history}
+            navigate={navigate}
             dispatch={dispatch}
             handleEdit={handleEdit}
             handleDelete={() => handleDelete(id)}

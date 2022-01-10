@@ -160,10 +160,14 @@ class Study {
 
   addLikes = async (studyId) => {
     try {
-      // console.log("studyId : " + studyId);
-      const response = await this.study.post('studies/likes', {
-        studyId,
-      });
+      // const response = await this.study.post('studies/likes', {
+      //   studyId,
+      // });
+      const response = {
+        data : {
+          likeUsers: ['test1', 'test2', 'teste3']
+        }
+      }
       return response;
     } catch (error) {
       console.error(error);
@@ -172,7 +176,12 @@ class Study {
 
   deleteLikes = async (studyId) => {
     try {
-      const response = await this.study.delete(`studies/likes/${studyId}`);
+      // const response = await this.study.delete(`studies/likes/${studyId}`);
+      const response = {
+        data : {
+          likeUsers: ['test1', 'test2']
+        }
+      }
       return response;
     } catch (error) {
       console.error(error);
@@ -181,7 +190,6 @@ class Study {
 
   getLikesUser = async (studyId) => {
     try {
-      // const response = await this.study.get(`studies/${studyId}/likes`);
       let response = {
         data: {
           likeUsers: ["test1", "test2"]
@@ -193,7 +201,6 @@ class Study {
     }
   };
 
-  /* users/sign 말고 studies/sign 어떤가? */
   getPresignedUrl = async (userName) => {
     try {
       const fileName = `${userName}_${getFormatedToday()}.png`;
@@ -204,45 +211,6 @@ class Study {
     } catch (error) {
       console.error(error);
     }
-  };
-
-  uploadImageToS3 = async (presignedUrl, file) => {
-    const response = await fetch(
-      new Request(presignedUrl, {
-        method: 'PUT',
-        body: file,
-        headers: new Headers({
-          'Content-Type': 'image/png',
-        }),
-      })
-    );
-
-    if (response.status !== 200) {
-      // The upload failed, so let's notify the caller.
-      //onError();
-      console.log('error occured!');
-      return;
-    }
-    return 'hehe success';
-  };
-
-  uploadImageToS3WithBase64 = async (presignedUrl, file, fileName) => {
-    // console.log("=======at base64==========");
-    // console.log("pre : ", presignedUrl);
-    // console.log("fileName: ", fileName);
-    // console.log("=======at base64==========");
-    let arr = file.split(','),
-      mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]),
-      n = bstr.length,
-      u8arr = new Uint8Array(n);
-
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-    const imageFile = new File([u8arr], fileName, { type: mime });
-    const response = await this.uploadImageToS3(presignedUrl, imageFile);
-    return response;
   };
 }
 

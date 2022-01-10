@@ -31,7 +31,6 @@ const MyPosts = (props) => {
   return (
     <>
       <Navbar />
-
       <section className={styles.pageWrapper}>
         <div className={styles.myLikes}>
           <main className={styles.main}>
