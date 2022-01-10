@@ -23,7 +23,6 @@ const CommentContainer = ({ id }) => {
 
   useEffect(() => {
     studyService.getComments(id).then((response) => {
-      console.log(response);
       setCommentList(response.data.comments);
     });
   }, [id, isComplete]);
