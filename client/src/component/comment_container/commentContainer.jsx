@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CommentInput from "../comment_input/commentInput";
 import CommentList from "../comment_list/commentList";
 import Modal from "../modal/modal_component/modal";
-import studyService from "../../service/study_service";
+import studyService from "service/study_service";
 
 const CommentContainer = ({ id }) => {
   const [commentList, setCommentList] = useState([]);

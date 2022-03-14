@@ -5,7 +5,7 @@ const initialState = [
   "typescript",
   "react",
   "vue",
-  "node.js",
+  "nodejs",
   "java",
   "spring",
   "kotlin",

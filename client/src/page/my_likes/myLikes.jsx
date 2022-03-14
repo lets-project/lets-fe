@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Navbar from "../../component/nav_bar/navbar";
-import StudyList from "../../component/study_list/studyList";
-import userService from "../../service/user_service";
+import Navbar from "component/nav_bar/navbar";
+import StudyList from "component/study_list/studyList";
+import userService from "service/user_service";
 import styles from "./myLikes.module.css";
 import { MdFavorite } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
@@ -43,13 +43,12 @@ const MyLikes = (props) => {
       });
       navigate("/");
     }
-    userService.getUserLikeList(userId).then((res) => {
-        console.log(res.data)
-      setLikeList((state) => res.data.likeStudies);
+    userService.getUserLikeList().then((res) => {
+      setLikeList(res.filter((post) => post.likePostStatus == "ACTIVE" ));
     });
 
-    userService.getUserReadList(userId).then((res) => {
-      setReadList((state) => res.data.readList);
+    userService.getUserLikeList().then((res) => {
+      setReadList(res);
     });
   }, [userId, navigate]);
 

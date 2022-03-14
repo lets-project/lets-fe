@@ -8,6 +8,8 @@ import {
   combineReducers,
 } from "@reduxjs/toolkit";
 import languageReducer from "./store/language";
+import writeReducer from "./store/write";
+import readReducer from "./store/read";
 import { Provider } from "react-redux";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -21,7 +23,9 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-  language: languageReducer
+  language: languageReducer,  
+  write: writeReducer,
+  read: readReducer,
 })
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

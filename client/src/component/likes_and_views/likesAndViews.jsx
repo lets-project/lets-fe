@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import studyService from "../../service/study_service";
-// import { setModalVisible } from "../../store/loginStep";
+import studyService from "service/study_service";
+// import { setModalVisible } from "store/loginStep";
 // import LoginModal
 import Modal from "../modal/modal_component/modal";
 import styles from "./likesAndViews.module.css";
@@ -11,24 +11,13 @@ import styles from "./likesAndViews.module.css";
 todo
 */
 
-const LikesAndViews = ({ views, studyId, userId }) => {
+const LikesAndViews = ({ viewCount, likeCount, studyId }) => {
   const [likeImg, setLikeImg] = useState("heart_unfilled");
   const [totalLikes, setTotalLikes] = useState(0);
   useEffect(() => {
-    studyService.getLikesUser(studyId).then((res) => {
-      setTotalLikes(res.likeUsers.length);
-      if (userId === undefined) {
-        setLikeImg("heart_unfilled");
-      } else {
-        const isLike = res.likeUsers.filter(
-          (likeUserid) => likeUserid === userId
-        );
-        isLike.length === 0
-          ? setLikeImg("heart_unfilled")
-          : setLikeImg("heart_filled");
-      }
-    });
-  }, [studyId, userId]);
+      setTotalLikes(likeCount);
+      setLikeImg("heart_unfilled"); // todo 글 단건조회 좋아요 여부
+  }, [studyId, totalLikes]);
 // todo login modal
 //   const modalVisible = useSelector((state) => state.loginStep.modalVisible); 로그인이 필요한지 store에서 가져옴
   // const [modalVisible, setModalVisible] = useState(false);
@@ -46,11 +35,6 @@ const LikesAndViews = ({ views, studyId, userId }) => {
   // };
 
   const handleLikesClick = async () => {
-    if (userId === undefined) {
-      // openModal(); // 로그인 창 띄워줌
-      return;
-    }
-
     if (likeImg === "heart_filled") {
       const response = await studyService.deleteLikes(studyId);
       setLikeImg("heart_unfilled");
@@ -80,7 +64,7 @@ const LikesAndViews = ({ views, studyId, userId }) => {
             src="/images/info/eye.png"
             alt="views"
           />
-          <p>{views}</p>
+          <p>{viewCount}</p>
         </div>
       </section>
       {/* <Modal visible={modalVisible} name="login" onClose={closeModal}> */}

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Portal from "../../portal/portal";
+import Portal from "component/portal/portal";
 
 const Modal = ({ name, onClose, visible, children }) => {
   const onMaskClick = (e) => {

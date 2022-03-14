@@ -6,12 +6,12 @@ import { FaRegCommentDots, FaRegEye } from "react-icons/fa";
 const StudyItem = ({ study }) => {
   const studyLang = [];
   const navigate = useNavigate();
-  const displayType = study.isClosed ? styles.closed : styles.open;
+  const displayType = study.postStatus == "RECRUTING" ? styles.open : styles.closed ;
 
-  for (let i = 0; i < 3; i++) {
-    if (study.language[i] === undefined) break;
-    if (study.language[i] === "c#") studyLang.push("cc");
-    else studyLang.push(study.language[i]);
+  for (let i = 0; i < study.tags.length; i++) {
+    if (study.tags[i] === undefined) break;
+    if (study.tags[i] === "c#") studyLang.push("cc");
+    else studyLang.push(study.tags[i]);
   }
 
   const onClick = () => {
@@ -47,7 +47,7 @@ const StudyItem = ({ study }) => {
 
           <div className={styles.infoItem}>
             <FaRegEye size={16} color={"#9A9A9A"} />
-            <p className={styles.views}>{study.views}</p>
+            <p className={styles.views}>{study.viewCount}</p>
           </div>
 
           <div className={styles.infoItem}>
@@ -56,10 +56,10 @@ const StudyItem = ({ study }) => {
               src="/images/info/heart_filled.png"
               alt="likes"
             />
-            <p>{study.totalLikes}</p>
+            <p>{study.likeCount}</p>
           </div>
         </section>
-        {study.isClosed && <div className={styles.closeNotice}>모집 완료</div>}
+        {study.postStatus != "RECRUTING" && <div className={styles.closeNotice}>모집 완료</div>}
       </li>
     
     </>

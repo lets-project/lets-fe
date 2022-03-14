@@ -74,114 +74,70 @@ class User {
     }
   };
 
-  getUserReadList = async (id) => {
+  getUserLikeList = async () => {
     try {
-    //   let response = await this.user.get(`users/read-list/${id}`);
-     let response = {
-        data: {
-            readList:[{
-                id : 1,
-                language : ["React","NodeJS"],
-                isClosed : true,
-                views : 56,
-                likes : ['test1', 'test2'],
-                totalLikes : 2,
-                title : "최신 사이드 프로젝트 같이하실 분",
-                content : "React, NodeJS로 진행하려고 합니다.",
-                author : { image: '3j5idn.PNG', nickName: 'TEST' },
-                createdAt : '2021-12-18T13:31:08.457Z',
-                updatedAt : '2021-12-18T13:31:08.457Z'
-              }, {
-                id : 2,
-                language : ["Vue","Spring"],
-                isClosed : false,
-                views : 105,
-                likes : [],
-                totalLikes : 20,
-                title : "최신 Toy Project 스터디원 모집합니다.",
-                content : "Vue와 Spring으로 진행하려고 합니다.",
-                author : { image: '3j5idn.PNG', nickName: '테스트' },
-                createdAt : '2021-12-18T13:31:08.457Z',
-                updatedAt : '2021-12-18T13:31:08.457Z'
-              }]
-        }
-      };
+    //   const response = await this.user.get(`users/myLikes/`);
+    let response = [{
+      id : 1,
+      tags : ["React","NodeJS"],
+      postStatus : "RECRUTING",
+      viewCount : 56,
+      likes : ['test1', 'test2'],
+      likeCount : 2,
+      likePostStatus : "ACTIVE",
+      title : "최신 사이드 프로젝트 같이하실 분",
+      content : "React, NodeJS로 진행하려고 합니다.",
+      author : { image: '3j5idn.PNG', nickName: 'TEST' },
+      createdAt : '2021-12-18T13:31:08.457Z',
+      updatedAt : '2021-12-18T13:31:08.457Z'
+    }, {
+      id : 2,
+      tags : ["Vue","Spring"],
+      postStatus : false,
+      viewCount : 105,
+      likes : [],
+      likeCount : 20,
+      likePostStatus : "INACTIVE",
+      title : "최신 Toy Project 스터디원 모집합니다.",
+      content : "Vue와 Spring으로 진행하려고 합니다.",
+      author : { image: '3j5idn.PNG', nickName: '테스트' },
+      createdAt : '2021-12-18T13:31:08.457Z',
+      updatedAt : '2021-12-18T13:31:08.457Z'
+    }];
       return response;
     } catch (error) {
       console.error(error);
     }
   };
 
-  getUserLikeList = async (id) => {
+  getUserPostList = async () => {
     try {
-    //   const response = await this.user.get(`users/likes/${id}`);
-    let response = {
-        data: {
-            likeStudies: [{
-                id : 1,
-                language : ["React","NodeJS"],
-                isClosed : true,
-                views : 56,
-                likes : ['test1', 'test2'],
-                totalLikes : 2,
-                title : "최신 사이드 프로젝트 같이하실 분",
-                content : "React, NodeJS로 진행하려고 합니다.",
-                author : { image: '3j5idn.PNG', nickName: 'TEST' },
-                createdAt : '2021-12-18T13:31:08.457Z',
-                updatedAt : '2021-12-18T13:31:08.457Z'
-              }, {
-                id : 2,
-                language : ["Vue","Spring"],
-                isClosed : false,
-                views : 105,
-                likes : [],
-                totalLikes : 20,
-                title : "최신 Toy Project 스터디원 모집합니다.",
-                content : "Vue와 Spring으로 진행하려고 합니다.",
-                author : { image: '3j5idn.PNG', nickName: '테스트' },
-                createdAt : '2021-12-18T13:31:08.457Z',
-                updatedAt : '2021-12-18T13:31:08.457Z'
-              }]
-            }
-        };
-      return response;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  getUserPostList = async (id) => {
-    try {
-    //   const response = await this.user.get(`users/myStudies/${id}`);
-    let response = {
-        data: {
-            postList:[{
-                id : 1,
-                language : ["React","NodeJS"],
-                isClosed : true,
-                views : 56,
-                likes : ['test1', 'test2'],
-                totalLikes : 2,
-                title : "최신 사이드 프로젝트 같이하실 분",
-                content : "React, NodeJS로 진행하려고 합니다.",
-                author : { image: '3j5idn.PNG', nickName: 'TEST' },
-                createdAt : '2021-12-18T13:31:08.457Z',
-                updatedAt : '2021-12-18T13:31:08.457Z'
-              }, {
-                id : 2,
-                language : ["Vue","Spring"],
-                isClosed : false,
-                views : 105,
-                likes : [],
-                totalLikes : 20,
-                title : "최신 Toy Project 스터디원 모집합니다.",
-                content : "Vue와 Spring으로 진행하려고 합니다.",
-                author : { image: '3j5idn.PNG', nickName: '테스트' },
-                createdAt : '2021-12-18T13:31:08.457Z',
-                updatedAt : '2021-12-18T13:31:08.457Z'
-              }]
-        }
-      };
+    //   const response = await this.user.get(`users/myPosts/`);
+    let response = [{
+      id : 1,
+      tags : ["React","NodeJS"],
+      postStatus : "RECRUTING",
+      viewCount : 56,
+      likes : ['test1', 'test2'],
+      likeCount : 2,
+      title : "최신 사이드 프로젝트 같이하실 분",
+      content : "React, NodeJS로 진행하려고 합니다.",
+      author : { image: '3j5idn.PNG', nickName: 'TEST' },
+      createdAt : '2021-12-18T13:31:08.457Z',
+      updatedAt : '2021-12-18T13:31:08.457Z'
+    }, {
+      id : 2,
+      tags : ["Vue","Spring"],
+      postStatus : false,
+      viewCount : 105,
+      likes : [],
+      likeCount : 20,
+      title : "최신 Toy Project 스터디원 모집합니다.",
+      content : "Vue와 Spring으로 진행하려고 합니다.",
+      author : { image: '3j5idn.PNG', nickName: '테스트' },
+      createdAt : '2021-12-18T13:31:08.457Z',
+      updatedAt : '2021-12-18T13:31:08.457Z'
+    }];
       return response;
     } catch (error) {
       console.error(error);

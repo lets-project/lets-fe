@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./commentItem.module.css";
-import studyService from "../../service/study_service";
-import { getFormatedToday } from "../../common/utils.js";
+import studyService from "service/study_service";
+import { getFormatedToday } from "common/utils.js";
 import CommentButtons from "../comment_buttons/commentButtons";
 
 const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {

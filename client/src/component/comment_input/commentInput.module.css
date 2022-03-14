@@ -1,4 +1,4 @@
-@value registerBackground from '../../common/color.css';
+@value registerBackground from 'common/color.css';
 
 .commentInput {
   display: flex;

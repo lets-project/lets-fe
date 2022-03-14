@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addLanguage, clearLanguage, initLanguage, removeLanguage } from '../../store/language';
+import { addLanguage, clearLanguage, initLanguage, removeLanguage } from 'store/language';
 import LanguageBarItem from '../language_bar_item/languageBarItem'
 import styles from './languageBarList.module.css';
 
@@ -12,7 +12,7 @@ const LanguageBarList = React.memo(() => {
     'typescript',
     'react',
     'vue',
-    'node.js',
+    'nodejs',
     'java',
     'spring',
     'kotlin',

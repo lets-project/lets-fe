@@ -10,11 +10,11 @@ const StudyButtons = ({
   dispatch,
   handleEdit,
   handleDelete,
-  isClosed,
+  postState,
   handleEnd,
 }) => {
   const [showPopup, setShowPopup] = useState(false);
-  const [close, setClose] = useState(isClosed);
+  const [postStatus, setPostStatus] = useState(postState);
   const [isDeleteButton, setIsDeleTeButton] = useState(false);
 
   const openModal = (target) => {
@@ -30,22 +30,22 @@ const StudyButtons = ({
   };
 
   const handleStudy = () => {
-    handleEnd(!close);
+    handleEnd(!postStatus);
     closeModal();
-    setClose((state) => !state);
+    // setPostStatus((state) => !state);
   };
 
   return (
     <>
       <section className={styles.buttonWrapper}>
         <button onClick={() => openModal("endModal")}>
-          {close === true ? "마감 취소" : "마감"}
+          {postStatus === "RECRUTING" ? "마감 취소" : "마감"}
         </button>
         <button onClick={() => handleEdit(dispatch, navigate)}>수정</button>
         <button onClick={() => openModal("deleteModal")}>삭제</button>
       </section>
 
-      {/* <Modal visible={showPopup} onClose={closeModal}> */}
+      <Modal visible={showPopup} onClose={closeModal}> 
         {isDeleteButton ? (
           <CancelButton
             confirmMsg="작성하신 글을 삭제 하시겠어요?"
@@ -57,17 +57,17 @@ const StudyButtons = ({
         ) : (
           <CancelButton
             confirmMsg={
-              close === true
+              postStatus === "RECRUTING"
                 ? "마감을 취소하시겠어요?"
                 : "마감 처리 하시겠어요?"
             }
-            positiveMsg={close === true ? "네, 취소할게요" : "네, 마감할게요"}
+            positiveMsg={postStatus === "RECRUTING" ? "네, 취소할게요" : "네, 마감할게요"}
             negativeMsg="아니요"
             onCancel={closeModal}
             onPublish={handleStudy}
           ></CancelButton>
         )}
-      {/* </Modal> */}
+       </Modal> 
     </>
   );
 };

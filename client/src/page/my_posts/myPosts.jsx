@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../component/nav_bar/navbar";
+import Navbar from "component/nav_bar/navbar";
 import styles from "./myPosts.module.css";
 import { FaBook } from "react-icons/fa";
-import StudyList from "../../component/study_list/studyList";
-import userService from "../../service/user_service";
+import StudyList from "component/study_list/studyList";
+import userService from "service/user_service";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 
 const MyPosts = (props) => {
   const [postList, setPostList] = useState([]);
@@ -24,7 +25,7 @@ const MyPosts = (props) => {
     }
 
     userService.getUserPostList(userId).then((res) => {
-      setPostList(res.data.postList);
+      setPostList(res);
     });
   }, [userId, navigate]);
 
