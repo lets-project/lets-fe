@@ -11,13 +11,19 @@ const Banner = React.memo(() => (
       </h1>
       <div className={styles.subBanner}>
         <div className={styles.subImgWrapper}>
-          렛츠 스터디 로고
+          <img
+            className={styles.bannerImg}
+            src={`/images/logo/lets.png`}
+            alt="lets" />
         </div>
         <span className={styles.weak}>에서 함께 할 팀원을 찾아보세요.</span>
       </div>
     </div>
-    <div className={styles.bannerImg}>
-      렛츠 스터디 로고
+    <div className={styles.mainImg}>
+      <img
+        className={styles.mainImg}
+        src={`/images/banner/banner.png`}
+        alt="lets" />
     </div>
   </section>
 ));

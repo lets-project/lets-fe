@@ -62,7 +62,8 @@ const Rating = React.memo(() => {
             </div>
           </header>
           <div className={styles.imgWrapper}>
-           {/* 이미지 */}
+          <img src={`/images/logo/lets.png`}
+                alt="lets"/>
           </div>
 
           <div className={styles.ratings}>
@@ -93,7 +94,7 @@ const Rating = React.memo(() => {
         <div className={styles.ratingIcon}>
           <img
             className={styles.ratingIconImg}
-            src="/images/logo/rating.png"
+            src="/images/logo/lets.png"
             alt="default"
             onClick={handleClick}
           />

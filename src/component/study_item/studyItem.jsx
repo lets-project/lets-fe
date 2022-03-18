@@ -30,7 +30,7 @@ const StudyItem = ({ study }) => {
             <li key={i} className={styles.language}>
               <img
                 className={styles.languageImage}
-                src={`/images/languages/${lang}.png`}
+                src={`/images/languages/${lang.toLowerCase()}.png`}
                 alt="language"
               />
               <p className={styles.languageName}>

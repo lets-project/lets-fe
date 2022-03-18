@@ -47,9 +47,8 @@
 }
 
 .mainImg {
-  width: 100%;
+  width: 50%;
   height: auto;
-  padding: 1.5rem;
 }
 
 .weak {
@@ -64,9 +63,8 @@
   }
 
   .mainImg {
-    width: 80%;
+    width: 60%;
     height: auto;
-    padding: 1.5rem;
   }
 
   .bannerImg {
@@ -130,7 +128,6 @@
   }
 
   .mainImg {
-    padding: 0;
     max-height: 130px;
   }
 
