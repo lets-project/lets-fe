@@ -47,7 +47,7 @@
 }
 
 .mainImg {
-  width: 50%;
+  width: 80%;
   height: auto;
 }
 
@@ -63,7 +63,8 @@
   }
 
   .mainImg {
-    width: 60%;
+    width: 80%;
+    text-align: center;
     height: auto;
   }
 
@@ -128,7 +129,7 @@
   }
 
   .mainImg {
-    max-height: 130px;
+    max-height: auto;
   }
 
   .title {
