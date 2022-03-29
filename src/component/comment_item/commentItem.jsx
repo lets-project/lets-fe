@@ -5,7 +5,7 @@ import studyService from "service/study_service";
 import { getFormatedToday } from "common/utils.js";
 import CommentButtons from "../comment_buttons/commentButtons";
 
-const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {
+const CommentItem = React.memo(({ postId, comment, setIsComplete, isComplete }) => {
   // const user = useSelector((state) => state.user);
   const user = {nickName: "test"}
   const [content, setContent] = useState(comment.content);
@@ -24,21 +24,31 @@ const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {
   const onDeleteClick = async () => {
     document.body.style.overflow = "auto";
     setInputVisible(false);
-    await studyService.deleteComment({ id: comment._id });
+    await studyService.deleteComment({
+      postId: postId,
+      id: comment.id });
+    window.location.reload();
+
     setIsComplete((isComplete) => !isComplete);
   };
 
   // 댓글 수정 완료 버튼 클릭
   const onModifyCompleteClick = async () => {
     const response = await studyService.modifyComment({
-      id: comment._id,
+      postId: postId,
+      id: comment.id,
       content,
     });
     if (response === 401) {
       // refresh token으로 access token 불러왔을때
-      await studyService.modifyComment({ id: comment._id, content });
+      await studyService.modifyComment({    
+        postId: postId, 
+        id: comment.id, 
+        content });
     }
     setInputVisible(false);
+    window.location.reload();
+
   };
 
   // 댓글 취소 버튼 클릭
@@ -54,8 +64,8 @@ const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {
           <img
             className={styles.userImg}
             src={
-              comment.author.image
-                ? `${comment.author.image}`
+              comment.userImagePath
+                ? `${comment.userImagePath}`
                 : defaultImage
             }
             alt="사용자 이미지"
@@ -64,7 +74,7 @@ const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {
           <div className={styles.commentInfo}>
             <div className={styles.title}>
               <div className={styles.userNickname}>
-                {comment.author.nickName}
+                {comment.nickName}
               </div>
               <div className={styles.registeredDate}>
                 {getFormatedToday(comment.createdAt)}
@@ -72,7 +82,7 @@ const CommentItem = React.memo(({ comment, setIsComplete, isComplete }) => {
             </div>
           </div>
         </div>
-        {user.nickName === comment.author.nickName && (
+        {user.nickName === comment.nickName && (
           <CommentButtons
             onModifyClick={onModifyClick}
             onDeleteClick={onDeleteClick}

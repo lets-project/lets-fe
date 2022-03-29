@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import studyService from "service/study_service";
-// import { setModalVisible } from "store/loginStep";
-// import LoginModal
-import Modal from "../modal/modal_component/modal";
 import styles from "./likesAndViews.module.css";
 
 /* 
@@ -11,39 +7,12 @@ import styles from "./likesAndViews.module.css";
 todo
 */
 
-const LikesAndViews = ({ viewCount, likeCount, studyId }) => {
-  const [likeImg, setLikeImg] = useState("heart_unfilled");
-  const [totalLikes, setTotalLikes] = useState(0);
-  useEffect(() => {
-      setTotalLikes(likeCount);
-      setLikeImg("heart_unfilled"); // todo 글 단건조회 좋아요 여부
-  }, [studyId, totalLikes]);
-// todo login modal
-//   const modalVisible = useSelector((state) => state.loginStep.modalVisible); 로그인이 필요한지 store에서 가져옴
-  // const [modalVisible, setModalVisible] = useState(false);
-
-  // const dispatch = useDispatch();
-
-  // const openModal = () => {
-  //   document.body.style.overflow = "hidden"; // todo 모아서 처리 가능한지 확인..
-  //   dispatch(setModalVisible(true));
-  // };
-
-  // const closeModal = () => {
-  //   document.body.style.overflow = "auto";
-  //   dispatch(setModalVisible(false));
-  // };
+const LikesAndViews = ({ viewCount, likeCount, isLikedPost, postId }) => {
+  const [likeImg] = useState(isLikedPost ? "heart_filled" : "heart_unfilled");
 
   const handleLikesClick = async () => {
-    if (likeImg === "heart_filled") {
-      const response = await studyService.deleteLikes(studyId);
-      setLikeImg("heart_unfilled");
-      setTotalLikes(response.data.likeUsers.length);
-    } else {
-      const response = await studyService.addLikes(studyId);
-      setTotalLikes(response.data.likeUsers.length);
-      setLikeImg("heart_filled");
-    }
+    window.location.reload();
+    const response = await studyService.clickedLikes(postId);
   };
 
   return (
@@ -56,7 +25,7 @@ const LikesAndViews = ({ viewCount, likeCount, studyId }) => {
             src={`/images/info/${likeImg}.png`}
             alt="likes"
           />
-          <p>{totalLikes}</p>
+          <p>{likeCount}</p>
         </div>
         <div className={styles.views}>
           <img
@@ -67,9 +36,6 @@ const LikesAndViews = ({ viewCount, likeCount, studyId }) => {
           <p>{viewCount}</p>
         </div>
       </section>
-      {/* <Modal visible={modalVisible} name="login" onClose={closeModal}> */}
-        {/* 로그인 화면 구현 */}
-      {/* </Modal> */}
     </>
   );
 };

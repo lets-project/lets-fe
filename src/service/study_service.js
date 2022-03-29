@@ -125,89 +125,47 @@ class Study {
     }
   };
 
-  // 스터디의 댓글 리스트 조회
-  getComments = async (id) => {
-    try {
-      // const response = await this.study.get(`posts/comments/${id}`);
-      let response = {
-        data: {
-          comments: [{
-            content: "TEST Comment",
-            _id: "TESTID",
-            author : {
-              image: 'test imag',
-              nickName: "test Nick",
-              createdAt: Date.now()
-            },
-            createdAt: Date.now()
-          }]
-        }
-      }
-      return response;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   // 신규 댓글 등록
   registerComment = async ({ id, content }) => {
     try {
-      const response = await this.study.post('posts/comments', {
-        studyId: id,
-        content,
-      });
-      return response;
+      // const response = await this.study.post(`posts/${id}/comments`, {
+      //   content: content,
+      // });
+      // return response;
     } catch (error) {
       console.error(error);
     }
   };
 
   // 댓글 수정
-  modifyComment = async ({ id, content }) => {
+  modifyComment = async ({ postId, id, content }) => {
     try {
-      const response = await this.study.patch(`posts/comments/${id}`, {
-        content,
-      });
-      return response;
+      // const response = await this.study.put(`posts/${postId}/comments/${id}`, {
+      //   content,
+      // });
+      // return response;
     } catch (error) {
-      //console.log(error.response.status);
+      console.log(error.response);
       return error.response.status;
-      //console.log("error from console.log", error);
-      //return
     }
   };
 
   // 댓글 삭제
-  deleteComment = async ({ id }) => {
+  deleteComment = async ({ postId, id }) => {
     try {
-      await this.study.delete(`posts/comments/${id}`);
+      // await this.study.delete(`posts/${postId}comments/${id}`);
     } catch (error) {
       console.error(error);
     }
   };
 
-  addLikes = async (studyId) => {
+  clickedLikes = async (postId) => {
     try {
-      // const response = await this.study.post('posts/likes', {
-      //   studyId,
-      // });
+      // const response = await this.study.post(`posts/${studyId}/likes`);
       const response = {
         data : {
-          likeUsers: ['test1', 'test2', 'teste3']
-        }
-      }
-      return response;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  deleteLikes = async (studyId) => {
-    try {
-      // const response = await this.study.delete(`posts/likes/${studyId}`);
-      const response = {
-        data : {
-          likeUsers: ['test1', 'test2']
+          likeCount:1,
+          likePostStatus:"ACTIVE"
         }
       }
       return response;

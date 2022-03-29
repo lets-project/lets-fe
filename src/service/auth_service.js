@@ -9,12 +9,14 @@ class Auth {
     this.auth = httpClient;
   }
 
-  login = async () => {
+  login = async ({ socialLoginId, authProvider }) => {
     try {
-      await this.auth.post("auth/signin");
-      //todo signin
+      const signinResponse = await this.auth.post(`auth/signin`, {
+        socialLoginId : socialLoginId,
+        authProvider : authProvider
+      })
     } catch (error) {
-
+      console.error(error);
     }
   };
 
@@ -50,9 +52,9 @@ class Auth {
 
   checkNickName = (nickName) => {
     try {
-      const res = this.auth.get("auth/exists", { nickname });
+      const res = this.auth.get("auth/exists", { nickName });
       return res;
-    }catch (error){
+    } catch (error) {
       console.log(error);
     }
   }

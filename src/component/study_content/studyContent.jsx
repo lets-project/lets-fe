@@ -12,8 +12,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import { toast } from "react-toastify";
 import RecommendPost from "../recomment_post/RecommendPost";
 
-// todo data 받아오고 formatDate 잘 출력되는지 확인
-
 const StudyLanguage = ({ tags }) => {
   const usedLanguage = tags;
   return (
@@ -39,14 +37,7 @@ const StudyContent = ({ id }) => {
   const user = {id : 'test ID',
                 nickName: "test Nic"};
   const read = useSelector((state) => state.read);
-  // const read = {
-  //     post : {
-  //       title: "sample title",
-  //       nickname: "sample nick",
-  //       createdAt: "2021.01.05",
-  //       language: ["React", "Vue"],
-  //     }
-  // }
+
   console.log(read);
 
   const handleDelete = async (id) => {
@@ -86,13 +77,13 @@ const StudyContent = ({ id }) => {
           <div className={styles.user}>
             <img
               className={styles.userImg}
+              src={read.post.userImagePath}
               alt="userImg"
             />
-            <div className={styles.userName}>TEST</div> 
-            {/* todo nickName */}
+            <div className={styles.userName}>{read.post.nickName}</div> 
           </div>
           <div className={styles.registeredDate}>
-            {/* {formatDate(read.createdAt)} */}
+            {formatDate(read.post.createdTime)}
           </div>
         </div>
         {user.nickName === read.nickname && (
@@ -104,8 +95,6 @@ const StudyContent = ({ id }) => {
             handleEnd={handleEnd}
             postState={read.post.postStatus}/>
         )}
-        
-        {/* RecommendPost */}
         <RecommendPost/>
 
         <StudyLanguage tags={read.post.tags}></StudyLanguage>
@@ -119,12 +108,14 @@ const StudyContent = ({ id }) => {
 
       <section className={styles.modalComment}>
         <LikesAndViews
-          views={read.post.viewCount}
-          totalLikes={read.post.likeCount}
-          studyId={read.post.id}
-        ></LikesAndViews>
+          viewCount={read.post.viewCount}
+          likeCount={read.post.likeCount}
+          isLikedPost={read.post.islikedPost}
+          postId={read.post.id}/>
         <div className={styles.postComment}>
-          <CommentContainer id={read.post.comments}></CommentContainer>
+          <CommentContainer 
+          postId={read.post.id}
+          comments={read.post.comments}/>
         </div>
       </section>
     </div>
