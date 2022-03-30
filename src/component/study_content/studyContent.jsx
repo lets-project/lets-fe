@@ -35,7 +35,7 @@ const StudyContent = ({ id }) => {
   const dispatch = useDispatch();
   // const user = useSelector((state) => state.user);
   const user = {id : 'test ID',
-                nickName: "test Nic"};
+                nickname: "test Nic"};
   const read = useSelector((state) => state.read);
 
   console.log(read);
@@ -80,13 +80,13 @@ const StudyContent = ({ id }) => {
               src={read.post.userImagePath}
               alt="userImg"
             />
-            <div className={styles.userName}>{read.post.nickName}</div> 
+            <div className={styles.userName}>{read.post.nickname}</div> 
           </div>
           <div className={styles.registeredDate}>
             {formatDate(read.post.createdTime)}
           </div>
         </div>
-        {user.nickName === read.nickname && (
+        {user.nickname === read.nickname && (
          <StudyButtons
             navigate={navigate}
             dispatch={dispatch}

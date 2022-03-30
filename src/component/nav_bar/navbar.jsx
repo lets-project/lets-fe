@@ -13,7 +13,7 @@ const Navbar = React.memo((props) => {
   // const user = useSelector((state) => state.user); // 저장된 유저정보 가져옴
   const user = {
     id: "TEST",
-    nickName: "Test Nickname",
+    nickname: "Test Nickname",
   };
   // todo login modal
   // const modalVisible = useSelector((state) => state.loginStep.modalVisible); // Login Modal이 필요한지 가져옴.

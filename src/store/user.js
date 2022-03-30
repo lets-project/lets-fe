@@ -19,7 +19,7 @@ const fetchUserByIdAction = createAction("user/fetchByIdStatus");
 const fetchUserByRefreshTokenAction = createAction(
   "user/fetchUserByRefreshToken"
 );
-const addUserNickNameAction = createAction("user/addUserNickName");
+const addUserNicknameAction = createAction("user/addUserNickname");
 const modifyUserInfoAction = createAction("user/modifyUserInfo");
 
 // 사용자 정보를 수정하고 access token을 설정합니다.
@@ -69,7 +69,7 @@ const fetchUserByRefreshToken = createAsyncThunk(
 
     const accessToken = response.data.accessToken;
     const userInfo = {
-      nickName: response.data.nickName,
+      nickname: response.data.nickname,
       id: response.data._id,
       image: response.data.image,
       likeLanguages: response.data.likeLanguages,
@@ -85,8 +85,8 @@ const fetchUserByRefreshToken = createAsyncThunk(
 );
 
 // 최초 회원 가입 시 user nickname을 설정하고 access token을 set합니다.
-const addUserNickName = createAsyncThunk(
-  addUserNickNameAction,
+const addUserNickname = createAsyncThunk(
+  addUserNicknameAction,
   async (userInfo, thunkAPI) => {
     const response = await authService.signUp(userInfo);
     const accessToken = response.data.accessToken;
@@ -100,7 +100,7 @@ const addUserNickName = createAsyncThunk(
 );
 
 const initialState = {
-  nickName: undefined,
+  nickname: undefined,
   id: undefined,
   imageUrl: undefined,
   likeLanguages: [],
@@ -120,22 +120,22 @@ const userSlice = createSlice({
   extraReducers: {
     [fetchUserById.fulfilled]: (state, { payload }) => ({
       ...state,
-      nickName: payload.nickName,
+      nickname: payload.nickname,
     }),
 
     [fetchUserByRefreshToken.fulfilled]: (state, { payload }) => ({
       ...state,
-      nickName: payload.nickName,
+      nickname: payload.nickname,
     }),
 
-    [addUserNickName.fulfilled]: (state, { payload }) => ({
+    [addUserNickname.fulfilled]: (state, { payload }) => ({
       ...state,
-      nickName: payload.nickName,
+      nickname: payload.nickname,
     }),
 
     [modifyUserInfo.fulfilled]: (state, { payload }) => ({
       ...state,
-      nickName: payload.nickName,
+      nickname: payload.nickname,
     }),
 
     [modifyUserInfo.rejected]: (state, { payload }) => {
@@ -150,7 +150,7 @@ export const { setUser, clearUser } = userSlice.actions;
 export {
   fetchUserById,
   fetchUserByRefreshToken,
-  addUserNickName,
+  addUserNickname,
   modifyUserInfo,
 };
 export default userSlice.reducer;

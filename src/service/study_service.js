@@ -38,7 +38,7 @@ class Study {
         likeCount : 2,
         title : "최신 사이드 프로젝트 같이하실 분",
         content : "React, NodeJS로 진행하려고 합니다.",
-        author : { image: '3j5idn.PNG', nickName: 'TEST' },
+        author : { image: '3j5idn.PNG', nickname: 'TEST' },
         createdAt : '2021-12-18T13:31:08.457Z',
         updatedAt : '2021-12-18T13:31:08.457Z'
       }, {
@@ -50,7 +50,7 @@ class Study {
         likeCount : 20,
         title : "최신 Toy Project 스터디원 모집합니다.",
         content : "Vue와 Spring으로 진행하려고 합니다.",
-        author : { image: '3j5idn.PNG', nickName: '테스트' },
+        author : { image: '3j5idn.PNG', nickname: '테스트' },
         createdAt : '2021-12-18T13:31:08.457Z',
         updatedAt : '2021-12-18T13:31:08.457Z'
       }];

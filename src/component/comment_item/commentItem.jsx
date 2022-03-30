@@ -7,7 +7,7 @@ import CommentButtons from "../comment_buttons/commentButtons";
 
 const CommentItem = React.memo(({ postId, comment, setIsComplete, isComplete }) => {
   // const user = useSelector((state) => state.user);
-  const user = {nickName: "test"}
+  const user = {nickname: "test"}
   const [content, setContent] = useState(comment.content);
   const [preContent, setPreContent] = useState(comment.content);
   const [inputVisible, setInputVisible] = useState(false); // 댓글 입력 여부
@@ -74,7 +74,7 @@ const CommentItem = React.memo(({ postId, comment, setIsComplete, isComplete }) 
           <div className={styles.commentInfo}>
             <div className={styles.title}>
               <div className={styles.userNickname}>
-                {comment.nickName}
+                {comment.nickname}
               </div>
               <div className={styles.registeredDate}>
                 {getFormatedToday(comment.createdAt)}
@@ -82,7 +82,7 @@ const CommentItem = React.memo(({ postId, comment, setIsComplete, isComplete }) 
             </div>
           </div>
         </div>
-        {user.nickName === comment.nickName && (
+        {user.nickname === comment.nickname && (
           <CommentButtons
             onModifyClick={onModifyClick}
             onDeleteClick={onDeleteClick}

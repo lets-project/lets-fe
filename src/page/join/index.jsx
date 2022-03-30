@@ -80,7 +80,7 @@ const Join = () => {
                         <input
                             className="nicknameInput"
                             type="text"
-                            name="nickNameInput"
+                            name="nicknameInput"
                             value={nickname}
                             onChange={(e) => {
                                 setNickname(e.target.value);

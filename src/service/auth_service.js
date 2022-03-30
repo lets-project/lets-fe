@@ -50,9 +50,9 @@ class Auth {
     this.auth.defaults.headers.common["Authorization"] = "";
   };
 
-  checkNickName = (nickName) => {
+  checkNickname = (nickname) => {
     try {
-      const res = this.auth.get("auth/exists", { nickName });
+      const res = this.auth.get("auth/exists", { nickname });
       return res;
     } catch (error) {
       console.log(error);

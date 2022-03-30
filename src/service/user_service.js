@@ -20,10 +20,10 @@ class User {
   };
 
   // user nickname 중복 검사를 실행합니다.
-  checkNickname = async (id, nickName) => {
+  checkNickname = async (id, nickname) => {
     try {
       const response = await this.user.get(
-        `users/${id}/exists?nickName=${nickName}`
+        `users/${id}/exists?nickname=${nickname}`
       );
       return response.data;
     } catch (error) {
@@ -32,10 +32,10 @@ class User {
   };
 
   // 닉네임을 이용해 사용자 정보를 조회합니다.
-  getUserInfoByNickName = async (nickName) => {
+  getUserInfoByNickname = async (nickname) => {
     try {
       const params = {
-        nickName: nickName,
+        nickname: nickname,
       };
 
       const user = await this.user.get(`users`, {
@@ -87,7 +87,7 @@ class User {
       likePostStatus : "ACTIVE",
       title : "최신 사이드 프로젝트 같이하실 분",
       content : "React, NodeJS로 진행하려고 합니다.",
-      author : { image: '3j5idn.PNG', nickName: 'TEST' },
+      author : { image: '3j5idn.PNG', nickname: 'TEST' },
       createdAt : '2021-12-18T13:31:08.457Z',
       updatedAt : '2021-12-18T13:31:08.457Z'
     }, {
@@ -100,7 +100,7 @@ class User {
       likePostStatus : "INACTIVE",
       title : "최신 Toy Project 스터디원 모집합니다.",
       content : "Vue와 Spring으로 진행하려고 합니다.",
-      author : { image: '3j5idn.PNG', nickName: '테스트' },
+      author : { image: '3j5idn.PNG', nickname: '테스트' },
       createdAt : '2021-12-18T13:31:08.457Z',
       updatedAt : '2021-12-18T13:31:08.457Z'
     }];
@@ -122,7 +122,7 @@ class User {
       likeCount : 2,
       title : "최신 사이드 프로젝트 같이하실 분",
       content : "React, NodeJS로 진행하려고 합니다.",
-      author : { image: '3j5idn.PNG', nickName: 'TEST' },
+      author : { image: '3j5idn.PNG', nickname: 'TEST' },
       createdAt : '2021-12-18T13:31:08.457Z',
       updatedAt : '2021-12-18T13:31:08.457Z'
     }, {
@@ -134,7 +134,7 @@ class User {
       likeCount : 20,
       title : "최신 Toy Project 스터디원 모집합니다.",
       content : "Vue와 Spring으로 진행하려고 합니다.",
-      author : { image: '3j5idn.PNG', nickName: '테스트' },
+      author : { image: '3j5idn.PNG', nickname: '테스트' },
       createdAt : '2021-12-18T13:31:08.457Z',
       updatedAt : '2021-12-18T13:31:08.457Z'
     }];

@@ -94,7 +94,7 @@ const PostModal = ({ study, handleClose }) => {
             />
             <div className={styles.userName}>{read.post.nickname}</div>
           </div>
-          {user.nickName === read.post.nickname && (
+          {user.nickname === read.post.nickname && (
             <TestButton
               dispatch={dispatch}
               history={history}

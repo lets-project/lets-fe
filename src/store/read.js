@@ -34,7 +34,7 @@ const readPost = createAsyncThunk(readPostAction, async (id, thunkAPI) => {
 
   return {
     "id": 1,
-    "nickName": "TEST Nick Name",
+    "nickname": "TEST Nick Name",
     "createdTime": "2022-02-02T22:49:29.7294406",
     "userImagePath": "https://clonehola.herokuapp.com/images/logo/lets.png",
     "likePostStatus": "INACTIVE",
@@ -79,7 +79,7 @@ const readSlice = createSlice({
         title: payload.title,
         tags: payload.tags,
         content: payload.content,
-        nickName: payload.nickName,
+        nickname: payload.nickname,
         createdTime: payload.createdTime,
         userImagePath: payload.userImagePath,
         comments: payload.comments,

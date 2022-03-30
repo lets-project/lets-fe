@@ -29,7 +29,7 @@ const Register = () => {
               className="titleInput"
               type="text"
               placeholder="제목을 입력하세요"
-              name="nickNameInput"
+              name="nicknameInput"
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
