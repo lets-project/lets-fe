@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import styles from "./navbar.module.css";
-import logo from "logo.svg";
 import Modal from "../modal/modal_component/modal";
 import SocialLogin from "component/social_login/SocialLogin";
 import { useNavigate } from "react-router-dom";
@@ -51,7 +50,7 @@ const Navbar = React.memo((props) => {
     <>
       <nav className={styles.navbar}>
         <a href="/">
-          <img className={styles.logo} src='images/logo/lets.png' alt="logo" />
+          <img className={styles.logo} src='/images/logo/lets.png' alt="logo" />
         </a>
         <div className={styles.loginElementWrapper}>
           <button className={styles.postRegister} onClick={handleRegister}>
