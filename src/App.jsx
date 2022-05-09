@@ -20,6 +20,7 @@ const App = () => {
                 <Route path={'/register'} element={<Register />} />
                 <Route path={'/settings'} element={<Settings />} />
                 <Route path={'/join'} element={<Join />} />
+                <Route path='*' element={<NotFound />}/>
             </Routes>
         </Router>
     );
