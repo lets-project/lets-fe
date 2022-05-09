@@ -5,6 +5,6 @@ const API_PRODUCT = "product api 주소";
 const baseURL = process.env.NODE_ENV === "development" ? API_DEV : API_PRODUCT;
 const httpClient = axios.create({
   baseURL,
-  withCredentials: true,
+  withCredentials: false,
 });
 export default httpClient;

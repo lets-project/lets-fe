@@ -7,7 +7,9 @@ import MyLikes from './page/my_likes/myLikes';
 import MyPosts from './page/my_posts/myPosts';
 import Register from './page/register/Register';
 import Settings from './page/settings/Settngs';
-import Join from './page/join/index';
+import Signup from './page/signup/signup';
+import NotFound from 'page/notFound/notFound';
+
 const App = () => {
     return (
         <Router>
@@ -19,7 +21,7 @@ const App = () => {
                 <Route path={'/myPosts'} element={<MyPosts />} />
                 <Route path={'/register'} element={<Register />} />
                 <Route path={'/settings'} element={<Settings />} />
-                <Route path={'/join'} element={<Join />} />
+                <Route path={'/signup'} element={<Signup />} />
                 <Route path='*' element={<NotFound />}/>
             </Routes>
         </Router>

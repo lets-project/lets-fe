@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchUserById } from "store/user";
 import { useDispatch } from "react-redux";
 import GoogleLogin from "react-google-login"
+import authService from 'service/auth_service';
 import axios from 'axios';
 import './styles';
 import * as S from './styles';
@@ -43,9 +44,10 @@ const ModalFirstLoginPage = (props) => {
                     <GoogleLogin
                     clientId='692968151737-f44mrhnfa91vsbroef2m19niurj476ta.apps.googleusercontent.com'
                     onSuccess={async(response) => {
+                        console.log(response);
                         const userData = {socialLoginId: response.googleId, authProvider: 'google'};
                         dispatch(fetchUserById(userData)).then((response) => {
-                            console.log(response);
+                            authService.login(userData);
                         })
                     }}
                     onFailure={async(response) => {
@@ -75,6 +77,26 @@ const ModalFirstLoginPage = (props) => {
                             }}
                         >
                             Github 로그인
+                        </S.LoginText>
+                    </S.LoginBtn><S.LoginBtn>
+                        <S.BtnImg src={`/images/login/googleBtn.png`} />
+                        <S.LoginText
+                            onClick={() => {
+                                console.log('구그로그인클릭');
+
+                                axios
+                                .get('https://lets-team-project.herokuapp.com/oauth2/authorization/google')
+                                .then((res) => {
+                                    if(res.loginSuccess){
+                                        axios.post('https://lets-team-project.herokuapp.com/api/auth/signin', )
+                                    }
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                });
+                            }}
+                        >
+                            Goolgle 로그인
                         </S.LoginText>
                     </S.LoginBtn>
                     <S.LoginBtn>
