@@ -23,7 +23,7 @@ class User {
   checkNickname = async (id, nickname) => {
     try {
       const response = await this.user.get(
-        `users/${id}/exists?nickname=${nickname}`
+        `auth/exists?nickname=${nickname}`
       );
       return response.data;
     } catch (error) {

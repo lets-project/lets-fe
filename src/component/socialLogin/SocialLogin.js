@@ -82,18 +82,7 @@ const ModalFirstLoginPage = (props) => {
                         <S.BtnImg src={`/images/login/googleBtn.png`} />
                         <S.LoginText
                             onClick={() => {
-                                console.log('구그로그인클릭');
-
-                                axios
-                                .get('https://lets-team-project.herokuapp.com/oauth2/authorization/google')
-                                .then((res) => {
-                                    if(res.loginSuccess){
-                                        axios.post('https://lets-team-project.herokuapp.com/api/auth/signin', )
-                                    }
-                                })
-                                .catch((err) => {
-                                    console.log(err);
-                                });
+                                curModalPageFunc(1);
                             }}
                         >
                             Goolgle 로그인

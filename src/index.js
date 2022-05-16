@@ -10,7 +10,9 @@ import {
 import languageReducer from "./store/language";
 import writeReducer from "./store/write";
 import readReducer from "./store/read";
+import loginStepReducer from "./store/loginStep";
 import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import logger from 'redux-logger'
@@ -26,6 +28,7 @@ const reducers = combineReducers({
   language: languageReducer,  
   write: writeReducer,
   read: readReducer,
+  loginStep: loginStepReducer,
 })
 
 const _persistedReducer = persistReducer(persistConfig, reducers);
@@ -45,6 +48,17 @@ ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
       </PersistGate>
     </Provider>
   </React.StrictMode>,

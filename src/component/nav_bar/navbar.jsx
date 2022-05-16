@@ -1,14 +1,18 @@
 import React, { useEffect } from "react";
 import styles from "./navbar.module.css";
 import Modal from "../modal/modal_component/modal";
-import SocialLogin from "component/social_login/SocialLogin";
+import SocialLogin from "component/social_login/socialLogin";
+import LoginModal from "../login_modal/loginModal";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import {setModalVisible} from "../../store/loginStep";
 
 const Navbar = React.memo((props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const modalVisible = useSelector((state) => state.loginStep.modalVisible);
+
   // const user = useSelector((state) => state.user); // 저장된 유저정보 가져옴
   const user = {
     id: "TEST",
@@ -25,6 +29,14 @@ const Navbar = React.memo((props) => {
   //   document.body.style.overflow = "auto";
   //   dispatch(setModalVisible(false));
   // }
+  const openModal = () => {
+    document.body.style.overflow = "hidden";
+    dispatch(setModalVisible(true));
+  };
+  const closeModal = () => {
+    document.body.style.overflow = "auto";
+    dispatch(setModalVisible(false));
+  };
   const handleRegister = () => {
     if (user.id === undefined) {
     }
@@ -56,17 +68,14 @@ const Navbar = React.memo((props) => {
           <button className={styles.postRegister} onClick={handleRegister}>
             새 글 쓰기
           </button>
-          <button className={styles.login} onClick={props.handleShow}>
+          <button className={styles.login} onClick={openModal}>
             로그인
           </button>
         </div>
 
-        {/* <Modal visible={modalVisible} name="login" onClose={closeModal}> */}
-        <SocialLogin
-          handleClose={props.handleClose}
-          show={props.show}
-          setShow={props.setShow}
-        />
+        <Modal visible={modalVisible} name="login" onClose={closeModal}>
+          <LoginModal handleClose={closeModal} tabIndex={0}></LoginModal>
+        </Modal>
       </nav>
     </>
   );

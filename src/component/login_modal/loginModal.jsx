@@ -41,9 +41,9 @@ const LoginModal = ({ handleClose }) => {
       case SET_NICKNAME:
         return <SetNicknameContainer />;
       case SET_INTEREST:
-        return <SetInterestContainer></SetInterestContainer>;
+        return <SetInterestContainer/>;
       case SET_IMAGE:
-        return <SetImageContainer></SetImageContainer>;
+        return <SetImageContainer/>;
       case SIGNUP_END:
         return <SignupEnd handleClose={handleClose}></SignupEnd>;
       default:
