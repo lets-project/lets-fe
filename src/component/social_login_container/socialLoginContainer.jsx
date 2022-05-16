@@ -10,16 +10,17 @@ const SocialLoginContainer = ({ handleClose }) => {
   const dispatch = useDispatch();
 
   const googleOnSuccess = async (response) => {
-    const { tokenId } = response;
     const userData = {socialLoginId: response.googleId, authProvider: 'google'};
     dispatch(fetchUserById(userData)).then((response) => {
-      console.log("fetchByuserID response :", response);       
-      // if (response.payload.loginSuccess === true) handleClose();
-      // else {
-      //   const id = response.payload._id;
-      //   dispatch(setSignUpUser({ key: "id", value: id }));
+      console.log("fetchByuserID response :", response);
+      if (response.type == fetchUserById.fulfilled) {
+        handleClose();
+      } 
+      else {
+        dispatch(setSignUpUser({ key: "socialLoginId", value: userData.socialLoginId }));
+        dispatch(setSignUpUser({ key: "authProvider", value: userData.authProvider }));
         dispatch(nextStep());
-      // }
+      }
     });
   };
 

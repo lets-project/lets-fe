@@ -10,7 +10,7 @@ const SetInterestContainer = (props) => {
   const handleLoginStep = () => {
     dispatch(
       setSignUpUser({
-        key: "likeLanguages",
+        key: "tags",
         value: likeLanguages.map((item) => item.value),
       })
     );

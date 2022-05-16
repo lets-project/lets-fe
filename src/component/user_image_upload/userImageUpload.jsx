@@ -3,17 +3,29 @@ import styles from "./userImageUpload.module.css";
 import { isBase64 } from "common/utils";
 
 const UserImageUpload = ({ image, setImage, setIsImageChanged }) => {
-  const baseUrl = "https://hola-post-image.s3.ap-northeast-2.amazonaws.com/";
+  const baseUrl = "/images/logo/lets.png";
 
   // 이미지 업로드 버튼
   const onImageUploadClick = async (e) => {
     if (e.target.files[0]) {
-      const reader = new FileReader();
+      const file = e.target.files[0];
+      if(file.size > 300000) {
+        alert("파일 사이즈가 너무 큽니다.")
+        return false
+      }
+      // FileReader를 사용해 BASE64로 변환합니다.
+      const reader = new FileReader()
+      // FileReader가 파일을 load했을 시 동작할 이벤트를 지정합니다.
       reader.addEventListener("load", () => {
-        setImage(reader.result);
-        //base64로 setImage
-      });
-      reader.readAsDataURL(e.target.files[0]);
+        const dataIndex = reader.result.indexOf(',') + 1
+        const base64 = reader.result.substring(
+            dataIndex,
+            reader.result.length
+        )
+        setImage(base64);
+      })
+      // file을 DataURL 형식으로 읽습니다.
+      reader.readAsDataURL(file)
     }
     setIsImageChanged(true);
   };
@@ -37,7 +49,7 @@ const UserImageUpload = ({ image, setImage, setIsImageChanged }) => {
             ? isBase64(image)
               ? image
               : `${image}`
-            : `${baseUrl}default.PNG`
+            : `${baseUrl}`
         }
         alt="user avatar"
       />

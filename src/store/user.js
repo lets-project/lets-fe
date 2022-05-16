@@ -47,7 +47,6 @@ const modifyUserInfo = createAsyncThunk(
 const fetchUserById = createAsyncThunk(
   fetchUserByIdAction,
   async (userData, thunkAPI) => {
-    console.log(userData);
     const response = await authService.login(userData.socialLoginId, userData.authProvider);
     const accessToken = response.accessToken;
 
@@ -67,12 +66,9 @@ const fetchUserByRefreshToken = createAsyncThunk(
   async (thunkAPI) => {
     const response = await authService.getUserInfo();
 
-    const accessToken = response.data.accessToken;
+    const accessToken = response.accessToken;
     const userInfo = {
-      nickname: response.data.nickname,
-      id: response.data._id,
-      image: response.data.image,
-      likeLanguages: response.data.likeLanguages,
+      nickname: response.nickname
     };
 
     // header에 access token 설정

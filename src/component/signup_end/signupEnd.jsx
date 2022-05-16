@@ -11,7 +11,7 @@ const SignupEnd = ({ handleClose }) => {
       </h1>
       <img
         className={styles.logo}
-        src="/images/logo/hola_logo_y.png"
+        src="/images/logo/lets.png"
         alt="logo"
       />
       <button
