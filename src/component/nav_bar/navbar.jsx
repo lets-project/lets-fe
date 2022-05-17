@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./navbar.module.css";
 import Modal from "../modal/modal_component/modal";
 import SocialLogin from "component/social_login/socialLogin";
+import LoginUser from "component/login_user/loginUser";
 import LoginModal from "../login_modal/loginModal";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,6 +40,8 @@ const Navbar = React.memo((props) => {
   };
   const handleRegister = () => {
     if (user.id === undefined) {
+      openModal();
+      return;
     }
     navigate("/register");
   };
@@ -68,9 +71,13 @@ const Navbar = React.memo((props) => {
           <button className={styles.postRegister} onClick={handleRegister}>
             새 글 쓰기
           </button>
+          {!user.nickname ? (
           <button className={styles.login} onClick={openModal}>
             로그인
           </button>
+        ) : (
+          <LoginUser />
+        )}
         </div>
 
         <Modal visible={modalVisible} name="login" onClose={closeModal}>
