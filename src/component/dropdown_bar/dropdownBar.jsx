@@ -44,7 +44,7 @@ const DropdownBar = () => {
         </li>
 
         <li className={styles.menuItem}>
-          <Link to="/setting" style={{ display: "inline-block" }}>
+          <Link to="/settings" style={{ display: "inline-block" }}>
             설정
           </Link>
         </li>
