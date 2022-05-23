@@ -1,55 +1,55 @@
 @value registerBackground from '../../common/color.css';
 
 .image {
-  display: flex;
+    display: flex;
 }
 
 .imageControl {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-left: 10px;
 }
 
 .imageControl input[type="file"] {
-  display: none;
+    display: none;
 }
 
 .customLabelFileUpload {
-  background-color: registerBackground;
-  color: white;
-  border-radius: 4px;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
-  padding-top: 4px;
-  width: 7.5rem;
-  height: 2rem;
-  font-weight: 500;
-  margin: 5px;
+    background-color: registerBackground;
+    color: white;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 4px;
+    width: 7.5rem;
+    height: 2rem;
+    font-weight: 500;
+    margin: 5px;
 }
 
 .buttonImageDelete {
-  width: 7.5rem;
-  height: 2rem;
-  font-size: 1rem;
-  color: white;
-  border-radius: 4px;
-  background-color: registerBackground;
-  margin: 5px;
-  margin-right: 0px;
-  padding: 0px;
-  font-weight: 600;
+    width: 7.5rem;
+    height: 2rem;
+    font-size: 1rem;
+    color: white;
+    border-radius: 4px;
+    background-color: registerBackground;
+    margin: 5px;
+    margin-right: 0px;
+    padding: 0px;
+    font-weight: 600;
 }
 
 .userImg {
-  display: block;
-  height: 10rem;
-  width: 10rem;
-  box-shadow: rgb(0 0 0 / 9%) 0px 0px 8px;
-  border-radius: 50%;
-  object-fit: cover;
-  transition: all 0.125s ease-in 0s;
-  margin: 40px 0px;
+    display: block;
+    height: 10rem;
+    width: 10rem;
+    box-shadow: rgb(0 0 0 / 9%) 0px 0px 8px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: all 0.125s ease-in 0s;
+    margin: 40px 0px;
 }

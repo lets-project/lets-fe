@@ -5,6 +5,7 @@
     box-sizing: border-box;
     min-height: 100%;
 }
+
 element.style {
     overflow: hidden;
 }
@@ -17,30 +18,32 @@ element.style {
     box-shadow: 1px 1px 6px grey;
     border-radius: 20px;
 }
-.bodyBody> div {
+
+.bodyBody > div {
     margin: 2rem;
     justify-content: center;
 
 }
 
-.name{
+.name {
     display: flex;
     margin-top: 1rem;
     justify-content: center;
 }
 
 
-.bodyTitle{
+.bodyTitle {
     display: flex;
     justify-content: center;
     font-family: "goWunFont";
 }
-.bodyTitle > h1{
+
+.bodyTitle > h1 {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-.bodyBody{
+.bodyBody {
     display: flex;
     justify-content: center;
     flex-direction: row;

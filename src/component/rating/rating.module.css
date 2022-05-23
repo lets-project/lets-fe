@@ -4,28 +4,28 @@
     bottom: 1.5rem;
     width: 4.5rem;
     height: 4.5rem;
-  }
-  
-  .ratingIconImg {
+}
+
+.ratingIconImg {
     width: 100%;
     cursor: pointer;
-  }
-  
-  .ratingIconImg:hover {
+}
+
+.ratingIconImg:hover {
     transform: scale(1.08);
     transition: all 0.2s ease-in;
-  }
-  
-  .imgWrapper {
+}
+
+.imgWrapper {
     width: 7rem;
     margin: 0 auto;
-  }
-  
-  .imgLogo {
+}
+
+.imgLogo {
     width: 100%;
-  }
-  
-  .container {
+}
+
+.container {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -36,63 +36,63 @@
     border-radius: 20px;
     box-shadow: 2px 4px 4px -2px rgba(0, 0, 0, 0.75);
     padding: 1rem;
-  }
-  
-  .ratings {
+}
+
+.ratings {
     overflow-y: auto;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .item {
+}
+
+.item {
     display: flex;
     justify-content: space-between;
     padding: 8px 32px;
-  }
-  
-  .header {
+}
+
+.header {
     display: flex;
     flex-direction: column;
     color: black;
     background-color: white;
     margin-bottom: 0.5rem;
-  }
-  
-  .exitWrapper {
+}
+
+.exitWrapper {
     cursor: pointer;
     display: flex;
     justify-content: flex-end;
-  }
-  
-  .titleWrapper {
+}
+
+.titleWrapper {
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: space-between;
-  }
-  
-  .title {
+}
+
+.title {
     font-weight: 800;
     font-size: 1.8rem;
-  }
-  
-  .content {
+}
+
+.content {
     margin-top: 0.25rem;
     font-size: 1rem;
-  }
-  
-  footer {
+}
+
+footer {
     background-color: white;
     border-radius: 0 0 20px 20px;
     height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  input {
+}
+
+input {
     width: 20rem;
     height: 2.5rem;
     border: none;
@@ -102,17 +102,17 @@
     border: 3px solid #4482f7;
     border-radius: 0.5rem;
     margin-right: 0.5rem;
-  }
-  
-  .inputWrapper {
+}
+
+.inputWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
-  }
-  
-  .submitButton {
+}
+
+.submitButton {
     background-color: black;
     border-radius: 8px;
     color: white;
@@ -127,14 +127,14 @@
     align-items: center;
     justify-content: center;
     color: white;
-  }
-  
-  .submitButton:hover {
+}
+
+.submitButton:hover {
     transform: scale(1.05);
-  }
-  
-  @media screen and (max-width: 1300px) {
+}
+
+@media screen and (max-width: 1300px) {
     .ratingIcon {
-      display: none;
+        display: none;
     }
-  }
+}

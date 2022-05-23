@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 /* 
 
@@ -30,7 +30,7 @@ const loginstepSlice = createSlice({
             currentStep: state.currentStep - 1,
         }),
         clearStep: () => initialState,
-        setSignUpUser: (state, { payload: { key, value } }) => ({
+        setSignUpUser: (state, {payload: {key, value}}) => ({
             ...state,
             [key]: value,
         }),

@@ -2,22 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import Portal from "component/portal/portal";
 
-const Modal = ({ name, onClose, visible, children }) => {
-  const onMaskClick = (e) => {
-    if (onClose === undefined) return;
-    if (e.target === e.currentTarget) {
-      onClose(e);
-    }
-  };
+const Modal = ({name, onClose, visible, children}) => {
+    const onMaskClick = (e) => {
+        if (onClose === undefined) return;
+        if (e.target === e.currentTarget) {
+            onClose(e);
+        }
+    };
 
-  return (
-    <Portal elementId="modal-root">
-      <ModalOverlay name={name} visible={visible} />
-      <ModalWrapper onClick={onMaskClick} tabIndex={-1} visible={visible}>
-        {children}
-      </ModalWrapper>
-    </Portal>
-  );
+    return (
+        <Portal elementId="modal-root">
+            <ModalOverlay name={name} visible={visible}/>
+            <ModalWrapper onClick={onMaskClick} tabIndex={-1} visible={visible}>
+                {children}
+            </ModalWrapper>
+        </Portal>
+    );
 };
 
 const ModalWrapper = styled.div`

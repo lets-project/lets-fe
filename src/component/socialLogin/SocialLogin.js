@@ -1,8 +1,8 @@
 /*eslint-disable*/
 
-import React, { useState, useEffect } from 'react';
-import { fetchUserById } from "store/user";
-import { useDispatch } from "react-redux";
+import React, {useState} from 'react';
+import {fetchUserById} from "store/user";
+import {useDispatch} from "react-redux";
 import GoogleLogin from "react-google-login"
 import authService from 'service/auth_service';
 import axios from 'axios';
@@ -27,79 +27,79 @@ function SocialLogin(props) {
 const curModalPageFunc = (curModal) => {
     switch (curModal) {
         case 0:
-            return <ModalFirstLoginPage />;
+            return <ModalFirstLoginPage/>;
         case 1:
-            return <ModalSecondNamePage />;
+            return <ModalSecondNamePage/>;
     }
 };
 
 const ModalFirstLoginPage = (props) => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
     return (
         <>
             <S.WelcomeText>렛츠에 오신 것을 환영합니다!</S.WelcomeText>
             <S.BtnWrapper>
                 <S.LoginColumn>
                     <S.LoginBtn>
-                    <GoogleLogin
-                    clientId='692968151737-f44mrhnfa91vsbroef2m19niurj476ta.apps.googleusercontent.com'
-                    onSuccess={async(response) => {
-                        console.log(response);
-                        const userData = {socialLoginId: response.googleId, authProvider: 'google'};
-                        dispatch(fetchUserById(userData)).then((response) => {
-                            authService.login(userData);
-                        })
-                    }}
-                    onFailure={async(response) => {
-                        console.log(response);
-                    }}
-                    render={(props) => ( 
-                        <S.BtnImg
-                        src={`/images/login/googleBtn.png`}
-                        onClick={props.onClick}/>
-                        )}/>
+                        <GoogleLogin
+                            clientId='692968151737-f44mrhnfa91vsbroef2m19niurj476ta.apps.googleusercontent.com'
+                            onSuccess={async (response) => {
+                                console.log(response);
+                                const userData = {socialLoginId: response.googleId, authProvider: 'google'};
+                                dispatch(fetchUserById(userData)).then((response) => {
+                                    authService.login(userData);
+                                })
+                            }}
+                            onFailure={async (response) => {
+                                console.log(response);
+                            }}
+                            render={(props) => (
+                                <S.BtnImg
+                                    src={`/images/login/googleBtn.png`}
+                                    onClick={props.onClick}/>
+                            )}/>
                         <S.LoginText>Google 로그인</S.LoginText>
                     </S.LoginBtn>
                     <S.LoginBtn>
-                        <S.BtnImg src={`/images/login/githubBtn.png`} />
+                        <S.BtnImg src={`/images/login/githubBtn.png`}/>
                         <S.LoginText
                             onClick={() => {
                                 axios
-                                .get('https://lets-team-project.herokuapp.com/oauth2/authorization/github')
-                                .then((res) => {
-                                    if(res.loginSuccess){
-                                        axios.post('https://lets-team-project.herokuapp.com/api/auth/signin', )
-                                    }
-                                })
-                                .catch((err) => {
-                                    console.log(err);
-                                });
+                                    .get('https://lets-team-project.herokuapp.com/oauth2/authorization/github')
+                                    .then((res) => {
+                                        if (res.loginSuccess) {
+                                            axios.post('https://lets-team-project.herokuapp.com/api/auth/signin',)
+                                        }
+                                    })
+                                    .catch((err) => {
+                                        console.log(err);
+                                    });
                             }}
                         >
                             Github 로그인
                         </S.LoginText>
                     </S.LoginBtn><S.LoginBtn>
-                        <S.BtnImg src={`/images/login/googleBtn.png`} />
-                        <S.LoginText
-                            onClick={() => {
-                                curModalPageFunc(1);
-                            }}
-                        >
-                            Goolgle 로그인
-                        </S.LoginText>
-                    </S.LoginBtn>
+                    <S.BtnImg src={`/images/login/googleBtn.png`}/>
+                    <S.LoginText
+                        onClick={() => {
+                            curModalPageFunc(1);
+                        }}
+                    >
+                        Goolgle 로그인
+                    </S.LoginText>
+                </S.LoginBtn>
                     <S.LoginBtn>
                         <S.BtnImg
                             src={`/images/login/kakaoBtn.png`}
                             onClick={() => {
                                 axios
-                                .get('https://lets-team-project.herokuapp.com/oauth2/authorization/kakao')
-                                .then((res) => {
-                                    console.log(res);
-                                })
-                                .catch((err) => {
-                                    console.log(err);
-                                });
+                                    .get('https://lets-team-project.herokuapp.com/oauth2/authorization/kakao')
+                                    .then((res) => {
+                                        console.log(res);
+                                    })
+                                    .catch((err) => {
+                                        console.log(err);
+                                    });
                             }}
                         />
                         <S.LoginText>Kakao 로그인</S.LoginText>
@@ -115,7 +115,7 @@ const ModalSecondNamePage = () => {
         <>
             <h1 className="title">
                 Hola에 처음 오셨군요!
-                <br />
+                <br/>
                 우선, 사용하실 닉네임을 설정해 볼까요?
             </h1>
             <div className="inputWrapper">

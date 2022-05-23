@@ -4,8 +4,8 @@ export const StyledGreyBackground = styled.div`
     z-index: 1000;
     position: fixed;
     display: ${(props) => {
-        return props.show ? 'flex' : 'none';
-    }};
+    return props.show ? 'flex' : 'none';
+}};
     justify-content: center;
     align-items: center;
     top: 0;

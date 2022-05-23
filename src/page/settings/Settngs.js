@@ -1,12 +1,11 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Modal } from 'react-bootstrap';
-import { ToastContainer, toast } from 'react-toastify';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {Modal} from 'react-bootstrap';
+import {toast, ToastContainer} from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import logo from 'logo.svg';
-import languageList from 'common/languageList';
 import Navbar from 'component/nav_bar/navbar';
 import './Settings.css';
 import axios from 'axios';
@@ -23,7 +22,8 @@ function Settings() {
     const notify = () => toast('변경이 완료되었어요!');
     const navigate = useNavigate();
 
-    const backHistory = () => {};
+    const backHistory = () => {
+    };
     //좋아하는 언어 (선택된)
     const [likeLanguages, setLikeLanguages] = useState([]);
     // console.log('likeLanguages', likeLanguages);
@@ -102,7 +102,7 @@ function Settings() {
     //서버에 전송하는 함수
     const postCreate = async (object) => {
         try {
-            const { data } = await axios.post(`${url}/projects/read`, object, {
+            const {data} = await axios.post(`${url}/projects/read`, object, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -117,12 +117,12 @@ function Settings() {
     return (
         <div className="settingMain">
             {/* <form onSubmit={onHandleSubmit} id="settingForm"> */}
-            <Navbar />
+            <Navbar/>
             <form>
-                <ToastContainer />
+                <ToastContainer/>
                 <h1>내 정보 수정</h1>
                 <div className="userImageUpload">
-                    <img className="userImageUploadUserImg" src={imgSrc} alt="user avatar" />
+                    <img className="userImageUploadUserImg" src={imgSrc} alt="user avatar"/>
                     <div className="userImageUploadImageControl">
                         <label className="userImageUploadCustomLabel">
                             이미지 선택
@@ -149,7 +149,7 @@ function Settings() {
                     />
                 </div>
                 <p className="settingDescription">Hola에서 사용되는 이름입니다.</p>
-                <hr />
+                <hr/>
                 <div className="settingTitleWrapper settingLikeLanguages">
                     <h3>관심 기술 태그</h3>
 
@@ -162,7 +162,7 @@ function Settings() {
                     </div>
                 </div>
                 <p className="description">관심 있는 기술 태그를 등록해주세요.</p>
-                <hr />
+                <hr/>
                 <button
                     type="submit"
                     form="settingForm"
@@ -172,7 +172,7 @@ function Settings() {
                         axios
                             .patch(
                                 'https://lets-team-project.herokuapp.com/api/users/setting',
-                                { name: '태희', id: 1, socialLoginId: '108552210897697745160' },
+                                {name: '태희', id: 1, socialLoginId: '108552210897697745160'},
                                 {
                                     headers: {
                                         Authorization:

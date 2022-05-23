@@ -1,16 +1,20 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
 * {
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
+
 .Settings {
     text-align: center;
     margin: 0;
     box-sizing: border-box;
     min-height: 100%;
 }
+
 * {
     box-sizing: inherit;
 }
+
 h3 {
     display: block;
     font-size: 1.17em;
@@ -20,6 +24,7 @@ h3 {
     margin-inline-end: 0px;
     font-weight: bold;
 }
+
 .likeLanguageWrapper {
     width: 100%;
 }
@@ -30,6 +35,7 @@ button {
     background-color: #fff;
     cursor: pointer;
 }
+
 p {
     display: block;
     margin-block-start: 1em;
@@ -37,6 +43,7 @@ p {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
+
 /* input {
   width: 20rem;
   height: 2.5rem;
@@ -60,6 +67,7 @@ hr {
     background-color: grey;
     height: 1px;
 }
+
 h1 {
     display: block;
     font-size: 2em;
@@ -100,6 +108,7 @@ div {
     width: 800px;
     padding-bottom: 5rem;
 }
+
 .userImageUpload {
     display: flex;
 }
@@ -140,6 +149,7 @@ div {
     font-weight: 500;
     margin: 5px;
 }
+
 .userImageUploadButtonImageDelete {
     width: 7.5rem;
     height: 2rem;
@@ -221,6 +231,7 @@ div {
     margin-top: 1.5rem;
     background-color: #262626;
 }
+
 .settingButtonSignOut {
     font-weight: 700;
     color: #fff;
@@ -289,6 +300,7 @@ div {
     height: 2rem;
     font-size: 1rem;
 }
+
 .settingLikeLanguages input {
     border-radius: 4px;
     font-size: large;

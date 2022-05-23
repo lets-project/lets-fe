@@ -4,45 +4,47 @@
     align-items: center;
     margin-right: 4rem;
     margin-top: 1rem;
-  }
-  
-  .likes {
+}
+
+.likes {
     display: flex;
     align-items: center;
     margin-right: 1rem;
     cursor: pointer;
-  }
-  
-  .views {
+}
+
+.views {
     display: flex;
     align-items: center;
-  }
-  
-  .itemImg {
+}
+
+.itemImg {
     width: 2rem;
     margin-right: 0.25rem;
-  }
-  
-  .eyeImg {
+}
+
+.eyeImg {
     width: 2.65rem;
     margin-right: 0.25rem;
-  }
-  
-  @media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 768px) {
     .likesAndViewsWrapper {
-      margin-right: 2rem;
+        margin-right: 2rem;
     }
-  }
-  
-  @media screen and (max-width: 575px) {
+}
+
+@media screen and (max-width: 575px) {
     .likesAndViewsWrapper {
-      margin-right: 0;
+        margin-right: 0;
     }
+
     .itemImg {
-      width: 1.5rem;
+        width: 1.5rem;
     }
+
     .eyeImg {
-      width: 2rem;
+        width: 2rem;
     }
-  }
+}
   

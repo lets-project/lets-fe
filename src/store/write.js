@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, createAction } from "@reduxjs/toolkit";
+import {createAction, createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import studyService from "../service/study_service";
 
 /* 
@@ -11,102 +11,102 @@ const writePostAction = createAction("write/writePost");
 const modifyPostAction = createAction("write/modifyPost");
 
 const writePost = createAsyncThunk(
-  writePostAction,
-  async ({ title, content, language }, thunkAPI) => {
-    const newLanguages = language.map((item) => item.value);
-    const response = await studyService.register({
-      title,
-      content,
-      language: newLanguages,
-    });
+    writePostAction,
+    async ({title, content, language}, thunkAPI) => {
+        const newLanguages = language.map((item) => item.value);
+        const response = await studyService.register({
+            title,
+            content,
+            language: newLanguages,
+        });
 
-    return response.status;
-  }
+        return response.status;
+    }
 );
 
 const modifyPost = createAsyncThunk(
-  modifyPostAction,
-  async ({ postId, title, content, language }, thunkAPI) => {
-    const new_lang = language.map((item) => item.value);
-    const response = await studyService.modify(
-      postId,
-      title,
-      content,
-      new_lang
-    );
+    modifyPostAction,
+    async ({postId, title, content, language}, thunkAPI) => {
+        const new_lang = language.map((item) => item.value);
+        const response = await studyService.modify(
+            postId,
+            title,
+            content,
+            new_lang
+        );
 
-    return response.status;
-  }
+        return response.status;
+    }
 );
 
 const initialState = {
-  title: "",
-  content: "",
-  language: [],
-  post: undefined,
-  postError: undefined,
-  postId: undefined,
+    title: "",
+    content: "",
+    language: [],
+    post: undefined,
+    postError: undefined,
+    postId: undefined,
 };
 
 const writeSlice = createSlice({
-  name: "write",
-  initialState,
-  reducers: {
-    changeField: (state, { payload: { key, value } }) => ({
-      ...state,
-      [key]: value,
-    }),
+    name: "write",
+    initialState,
+    reducers: {
+        changeField: (state, {payload: {key, value}}) => ({
+            ...state,
+            [key]: value,
+        }),
 
-    changeLanguage: (state, { payload: language }) => ({
-      ...state,
-      language,
-    }),
+        changeLanguage: (state, {payload: language}) => ({
+            ...state,
+            language,
+        }),
 
-    clearField: (state) => initialState,
+        clearField: (state) => initialState,
 
-    setPost: (state, { payload: post }) => ({
-      ...state,
-      title: post.title,
-      content: post.content,
-      language: post.language,
-      postId: post.id,
-    }),
-  },
-  extraReducers: {
-    [writePost.pending]: (state, { payload }) => ({
-      ...state,
-      post: null,
-      postError: null,
-    }),
-    [writePost.fulfilled]: (state, { payload }) => {
-      // 수정 필요
-      if (payload === 201) {
-        state.post = "success";
-      }
-      state.post = payload; // post 정보 담음
+        setPost: (state, {payload: post}) => ({
+            ...state,
+            title: post.title,
+            content: post.content,
+            language: post.language,
+            postId: post.id,
+        }),
     },
-    [writePost.rejected]: (state, { payload }) => {
-      if (payload === 401) {
-        state.postError = "failed"; // post 정보 담음
-      }
+    extraReducers: {
+        [writePost.pending]: (state, {payload}) => ({
+            ...state,
+            post: null,
+            postError: null,
+        }),
+        [writePost.fulfilled]: (state, {payload}) => {
+            // 수정 필요
+            if (payload === 201) {
+                state.post = "success";
+            }
+            state.post = payload; // post 정보 담음
+        },
+        [writePost.rejected]: (state, {payload}) => {
+            if (payload === 401) {
+                state.postError = "failed"; // post 정보 담음
+            }
+        },
+        [modifyPost.fulfilled]: (state, {payload}) => {
+            // 수정 필요
+            if (payload === 200) {
+                state = {...state, post: "success"};
+                return state;
+            }
+            state.post = payload; // post 정보 담음
+        },
+        [modifyPost.rejected]: (state, {payload}) => {
+            if (payload === 401) {
+                state.postError = "failed"; // post 정보 담음
+            }
+        },
     },
-    [modifyPost.fulfilled]: (state, { payload }) => {
-      // 수정 필요
-      if (payload === 200) {
-        state = { ...state, post: "success" };
-        return state;
-      }
-      state.post = payload; // post 정보 담음
-    },
-    [modifyPost.rejected]: (state, { payload }) => {
-      if (payload === 401) {
-        state.postError = "failed"; // post 정보 담음
-      }
-    },
-  },
 });
 
-export const { changeField, changeLanguage, clearField, setPost } =
-  writeSlice.actions;
-export { writePost, modifyPost };
+export const {changeField, changeLanguage, clearField, setPost} =
+    writeSlice.actions;
+export {writePost, modifyPost};
 export default writeSlice.reducer;

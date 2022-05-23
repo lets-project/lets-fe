@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 import logo from 'logo.svg';
 import '../settings/Settings.css';
@@ -55,13 +55,13 @@ const Join = () => {
     return (
         <>
             <div className="settingMain">
-                <Navbar />
+                <Navbar/>
                 <form>
                     <h1>회원가입</h1>
                     <h3 className="imageH3">이미지를 선택해주세요</h3>
                     <p className="description">미 업로드시 기본 이미지로 자동 설정됩니다.</p>
                     <div className="userImageUpload">
-                        <img className="userImageUploadUserImg" src={imgSrc} alt="user avatar" />
+                        <img className="userImageUploadUserImg" src={imgSrc} alt="user avatar"/>
                         <div className="userImageUploadImageControl">
                             <label className="userImageUploadCustomLabel">
                                 이미지 선택
@@ -87,7 +87,7 @@ const Join = () => {
                             }}
                         />
                     </div>
-                    <hr />
+                    <hr/>
                     <div className="settingTitleWrapper settingLikeLanguages">
                         <h3>관심 기술을 태그해주세요</h3>
                         <div className="likeLanguageWrapper">
@@ -100,7 +100,7 @@ const Join = () => {
                     </div>
                     <p className="description">관심 태그를 기반으로 소식을 추천해드려요.</p>
 
-                    <hr />
+                    <hr/>
                     {/* 닉네임님 안녕하세요, 회원가입이 완료되었습니다
                     라는 모달 띄우기 */}
                     <button
