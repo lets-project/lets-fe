@@ -55,7 +55,7 @@ const fetchUserById = createAsyncThunk(
             "Authorization"
             ] = `Bearer ${accessToken}`;
 
-        return response.data;
+        return response;
     }
 );
 

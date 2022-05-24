@@ -1,20 +1,22 @@
 import httpClient from "./http_client";
+import axios from "axios";
 
 /* 
 auth 관련 API를 정의한 class입니다.
 */
 
 class Auth {
-    constructor(httpClient) {
+    constructor() {
         this.auth = httpClient;
     }
 
-    login = async ({socialLoginId, authProvider}) => {
+    login = async (socialLoginId, authProvider) => {
         try {
             const signinResponse = await this.auth.post(`auth/signin`, {
                 socialLoginId: socialLoginId,
                 authProvider: authProvider
-            })
+            });
+            return signinResponse;
         } catch (error) {
             console.error(error);
         }

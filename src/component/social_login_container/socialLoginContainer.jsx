@@ -5,12 +5,12 @@ import SocialLogin from "component/social_login/socialLogin";
 import {fetchUserById} from "store/user";
 
 const SocialLoginContainer = ({handleClose}) => {
-    const googleClientId = '692968151737-f44mrhnfa91vsbroef2m19niurj476ta.apps.googleusercontent.com';
+    const googleClientId = process.env.REACT_APP_GOOGLE_API_KEY;
     const kakaoClientId = "350a422d4d8b1bb1be2dc82fe517afed";
     const dispatch = useDispatch();
 
     const googleOnSuccess = async (response) => {
-        const userData = {socialLoginId: response.googleId, authProvider: 'google'};
+        const userData = { socialLoginId: response.googleId, authProvider: 'google'};
         dispatch(fetchUserById(userData)).then((response) => {
             console.log("fetchByuserID response :", response);
             if (response.type == fetchUserById.fulfilled) {
