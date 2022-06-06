@@ -11,12 +11,10 @@ const Navbar = React.memo((props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const modalVisible = useSelector((state) => state.loginStep.modalVisible);
+    const loginStep = useSelector((state) => state.loginStep);
+    
 
-    // const user = useSelector((state) => state.user); // 저장된 유저정보 가져옴
-    const user = {
-        id: "TEST",
-        nickname: "",
-    };
+    const user = useSelector((state) => state.user); // 저장된 유저정보 가져옴
     // todo login modal
     // const modalVisible = useSelector((state) => state.loginStep.modalVisible); // Login Modal이 필요한지 가져옴.
     // const [modalVisible, setModalVisible] = useState(false);
@@ -53,9 +51,11 @@ const Navbar = React.memo((props) => {
             // position: "top-right",
             // autoClose: 3000,
             // });
-            // }
+            
             // 실패했을때 에러처리 필요
             // });
+            console.log('test');
+            console.log(user);
         }
     }, [dispatch, navigate, user.id]);
 

@@ -7,6 +7,7 @@ import {combineReducers, configureStore,} from "@reduxjs/toolkit";
 import languageReducer from "./store/language";
 import writeReducer from "./store/write";
 import readReducer from "./store/read";
+import userReducer from "./store/user";
 import loginStepReducer from "./store/loginStep";
 import {Provider} from "react-redux";
 import {ToastContainer} from "react-toastify";
@@ -26,6 +27,7 @@ const reducers = combineReducers({
     write: writeReducer,
     read: readReducer,
     loginStep: loginStepReducer,
+    user: userReducer,
 })
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

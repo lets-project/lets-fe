@@ -98,8 +98,8 @@ const addUserNickname = createAsyncThunk(
 const initialState = {
     nickname: undefined,
     id: undefined,
-    imageUrl: undefined,
-    likeLanguages: [],
+    profile: undefined,
+    tags: [],
 };
 
 const defaultPath = "기본 이미지";
@@ -117,6 +117,7 @@ const userSlice = createSlice({
         [fetchUserById.fulfilled]: (state, {payload}) => ({
             ...state,
             nickname: payload.nickname,
+            id : payload,
         }),
 
         [fetchUserByRefreshToken.fulfilled]: (state, {payload}) => ({

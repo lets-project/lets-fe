@@ -13,7 +13,7 @@ const SetImageContainer = (props) => {
     const [userImage, setUserImage] = useState(null);
 
     const handleSignUp = async () => {
-        const nickName = loginStep.nickName;
+        const nickname = loginStep.nickName;
         const socialLoginId = loginStep.socialLoginId;
         const tags = loginStep.tags;
         const authProvider = loginStep.authProvider;
@@ -21,7 +21,7 @@ const SetImageContainer = (props) => {
         if (isImageChanged) {
             if (userImage) {
                 const {preSignedUrl, fileName} = await studyService.getPresignedUrl(
-                    nickName
+                    nickname
                 );
                 profile = fileName;
 
@@ -40,7 +40,7 @@ const SetImageContainer = (props) => {
         dispatch(
             addUserNickname({
                 socialLoginId,
-                nickName,
+                nickname,
                 tags,
                 profile,
                 authProvider
