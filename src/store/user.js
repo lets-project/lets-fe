@@ -116,7 +116,8 @@ const userSlice = createSlice({
     extraReducers: {
         [fetchUserById.fulfilled]: (state, {payload}) => ({
             ...state,
-            nickname: payload.nickname,
+            nickname: payload.data.nickname,
+            profile: payload.data.profile,
             id : payload,
         }),
 

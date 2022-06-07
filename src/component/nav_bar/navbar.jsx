@@ -66,15 +66,18 @@ const Navbar = React.memo((props) => {
                     <img className={styles.logo} src='/images/logo/lets.png' alt="logo"/>
                 </a>
                 <div className={styles.loginElementWrapper}>
-                    <button className={styles.postRegister} onClick={handleRegister}>
-                        새 글 쓰기
-                    </button>
+                    
                     {!user.nickname ? (
                         <button className={styles.login} onClick={openModal}>
                             로그인
                         </button>
                     ) : (
-                        <LoginUser/>
+                        <div className={styles.loginElementWrapper}>
+                            <button className={styles.postRegister} onClick={handleRegister}>
+                                새 글 쓰기
+                            </button>
+                            <LoginUser/>
+                        </div>
                     )}
                 </div>
 
