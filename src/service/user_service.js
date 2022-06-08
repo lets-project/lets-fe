@@ -80,7 +80,7 @@ class User {
             let response = [{
                 id: 1,
                 tags: ["React", "NodeJS"],
-                postStatus: "RECRUTING",
+                postStatus: "RECRUITING",
                 viewCount: 56,
                 likes: ['test1', 'test2'],
                 likeCount: 2,
@@ -116,7 +116,7 @@ class User {
             let response = [{
                 id: 1,
                 tags: ["React", "NodeJS"],
-                postStatus: "RECRUTING",
+                postStatus: "RECRUITING",
                 viewCount: 56,
                 likes: ['test1', 'test2'],
                 likeCount: 2,

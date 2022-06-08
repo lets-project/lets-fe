@@ -4,7 +4,7 @@ import StudyList from 'component/study_list/studyList';
 import useStudySearch from '../hooks/useStudySearch';
 
 const ShowByDate = ({postStatus}) => {
-    const sort = '-viewCount,DECS';
+    const sort = 'viewCount,DESC';
     const [pageNumber, setPageNumber] = useState(0);
 
     const observer = useRef();

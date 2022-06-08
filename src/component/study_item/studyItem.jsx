@@ -6,7 +6,8 @@ import {FaRegCommentDots, FaRegEye} from "react-icons/fa";
 const StudyItem = ({study}) => {
     const studyLang = [];
     const navigate = useNavigate();
-    const displayType = study.postStatus == "RECRUTING" ? styles.open : styles.closed;
+    console.log(study);
+    const displayType = study.status == "RECRUITING" ? styles.open : styles.closed;
 
     for (let i = 0; i < study.tags.length; i++) {
         if (study.tags[i] === undefined) break;
@@ -15,7 +16,7 @@ const StudyItem = ({study}) => {
     }
 
     const onClick = () => {
-        navigate(`/study/${study._id}`);
+        navigate(`/study/${study.id}`);
     };
 
     return (
@@ -59,7 +60,7 @@ const StudyItem = ({study}) => {
                         <p>{study.likeCount}</p>
                     </div>
                 </section>
-                {study.postStatus != "RECRUTING" && <div className={styles.closeNotice}>모집 완료</div>}
+                {study.status != "RECRUITING" && <div className={styles.closeNotice}>모집 완료</div>}
             </li>
 
         </>

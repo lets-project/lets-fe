@@ -13,7 +13,6 @@ class Study {
     getList = async (postStatus, page, sort, tags) => {
         try {
             const params = {
-                status: postStatus,
                 page: page,
                 sort: sort,
                 tags: tags,
@@ -22,39 +21,17 @@ class Study {
             if (tags.length !== 0) {
                 // 선택된 language가 있으면 language 속성 추가
                 const qs = tags.map((language) => language).join(',');
-                params.language = qs;
+                params.tags = qs;
             }
 
-            // const reponse = await this.study.get('posts', {
-            //   params,
-            // });
-            const response = {};
-            const studyList = [{
-                id: 1,
-                tags: ["React", "NodeJS"],
-                postStatus: "RECRUTING",
-                viewCount: 56,
-                likes: ['test1', 'test2'],
-                likeCount: 2,
-                title: "최신 사이드 프로젝트 같이하실 분",
-                content: "React, NodeJS로 진행하려고 합니다.",
-                author: {image: '3j5idn.PNG', nickname: 'TEST'},
-                createdAt: '2021-12-18T13:31:08.457Z',
-                updatedAt: '2021-12-18T13:31:08.457Z'
-            }, {
-                id: 2,
-                tags: ["Vue", "Spring"],
-                postStatus: false,
-                viewCount: 105,
-                likes: [],
-                likeCount: 20,
-                title: "최신 Toy Project 스터디원 모집합니다.",
-                content: "Vue와 Spring으로 진행하려고 합니다.",
-                author: {image: '3j5idn.PNG', nickname: '테스트'},
-                createdAt: '2021-12-18T13:31:08.457Z',
-                updatedAt: '2021-12-18T13:31:08.457Z'
-            }];
-            response.data = studyList;
+            if (postStatus !== '') {
+                params.status = postStatus;
+            }
+
+            const response = await this.study.get('posts/filter', {
+              params,
+            });
+           
             return response;
         } catch (error) {
             console.error(error);

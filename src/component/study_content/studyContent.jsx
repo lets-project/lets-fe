@@ -33,11 +33,7 @@ const LangItem = ({Language}) => {
 const StudyContent = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    // const user = useSelector((state) => state.user);
-    const user = {
-        id: 'test ID',
-        nickname: "test Nic"
-    };
+    const user = useSelector((state) => state.user);
     const read = useSelector((state) => state.read);
 
     console.log(read);

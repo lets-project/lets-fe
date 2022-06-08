@@ -39,7 +39,7 @@ const StudyButtons = ({
         <>
             <section className={styles.buttonWrapper}>
                 <button onClick={() => openModal("endModal")}>
-                    {postStatus === "RECRUTING" ? "마감 취소" : "마감"}
+                    {postStatus === "RECRUITING" ? "마감 취소" : "마감"}
                 </button>
                 <button onClick={() => handleEdit(dispatch, navigate)}>수정</button>
                 <button onClick={() => openModal("deleteModal")}>삭제</button>
@@ -57,11 +57,11 @@ const StudyButtons = ({
                 ) : (
                     <CancelButton
                         confirmMsg={
-                            postStatus === "RECRUTING"
+                            postStatus === "RECRUITING"
                                 ? "마감을 취소하시겠어요?"
                                 : "마감 처리 하시겠어요?"
                         }
-                        positiveMsg={postStatus === "RECRUTING" ? "네, 취소할게요" : "네, 마감할게요"}
+                        positiveMsg={postStatus === "RECRUITING" ? "네, 취소할게요" : "네, 마감할게요"}
                         negativeMsg="아니요"
                         onCancel={closeModal}
                         onPublish={handleStudy}

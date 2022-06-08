@@ -40,12 +40,6 @@ const Main = () => {
     };
     return (
         <>
-            {/* handleClose도 넘겨주는 코드로 수정하면 다 해결될 것 같습니다.
-      Modal쪽에 말씀하신 주석부분에 onClose로 뭔가를 넘겨주고 계신 걸 확인했는데, 
-      제가 지금 제대로 파악이 안되고 있어서...사용을 못했습니다...!ㅠㅠ
-      혹시 모달을 재활용 가능한 컴포넌트로 만드신건가요? 그러면 
-      그거 받아서 소셜 로그인에 띄우는 것도 괜찮을 것 같습니다. */}
-
             <Navbar
                 setShow={setShow}
                 handleShow={handleShow}
@@ -65,8 +59,7 @@ const Main = () => {
                                     className={`${styles.category__item} ${
                                         category === SHOW_BY_DATE ? ACTIVE : INACTIVE
                                     }`}
-                                    onClick={() => toggleCategory(SHOW_BY_DATE)}
-                                >
+                                    onClick={() => toggleCategory(SHOW_BY_DATE)}>
                                     <FaCalendarCheck/>
                                     <span className={styles.text}>최신</span>
                                 </div>
@@ -91,9 +84,9 @@ const Main = () => {
                                     readOnly
                                 />
                                 <label htmlFor="languageSelect">
-                  <span className={styles.selectTitle}>
-                    모집 중인 글만 보기
-                  </span>
+                                    <span className={styles.selectTitle}>
+                                        모집 중인 글만 보기
+                                    </span>
                                 </label>
                             </div>
                         </div>
