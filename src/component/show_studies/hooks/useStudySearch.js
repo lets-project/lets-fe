@@ -25,6 +25,8 @@ const useStudySearch = (postStatus, page, sort) => {
         studyService
             .getList(postStatus, page, sort, selectedLanguages)
             .then((response) => {
+                console.log('response');
+                console.log(response);
                 setStudyList((prev) => [...prev, ...response.data]);
                 setLoading(false);
                 setHasMore(response.data.length > 0);

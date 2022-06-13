@@ -112,33 +112,33 @@ class User {
 
     getUserPostList = async () => {
         try {
-            //   const response = await this.user.get(`users/myPosts/`);
-            let response = [{
-                id: 1,
-                tags: ["React", "NodeJS"],
-                postStatus: "RECRUITING",
-                viewCount: 56,
-                likes: ['test1', 'test2'],
-                likeCount: 2,
-                title: "최신 사이드 프로젝트 같이하실 분",
-                content: "React, NodeJS로 진행하려고 합니다.",
-                author: {image: '3j5idn.PNG', nickname: 'TEST'},
-                createdAt: '2021-12-18T13:31:08.457Z',
-                updatedAt: '2021-12-18T13:31:08.457Z'
-            }, {
-                id: 2,
-                tags: ["Vue", "Spring"],
-                postStatus: false,
-                viewCount: 105,
-                likes: [],
-                likeCount: 20,
-                title: "최신 Toy Project 스터디원 모집합니다.",
-                content: "Vue와 Spring으로 진행하려고 합니다.",
-                author: {image: '3j5idn.PNG', nickname: '테스트'},
-                createdAt: '2021-12-18T13:31:08.457Z',
-                updatedAt: '2021-12-18T13:31:08.457Z'
-            }];
-            return response;
+              const response = await this.user.get(`users/myPosts/`);
+            // let response = [{
+            //     id: 1,
+            //     tags: ["React", "NodeJS"],
+            //     postStatus: "RECRUITING",
+            //     viewCount: 56,
+            //     likes: ['test1', 'test2'],
+            //     likeCount: 2,
+            //     title: "최신 사이드 프로젝트 같이하실 분",
+            //     content: "React, NodeJS로 진행하려고 합니다.",
+            //     author: {image: '3j5idn.PNG', nickname: 'TEST'},
+            //     createdAt: '2021-12-18T13:31:08.457Z',
+            //     updatedAt: '2021-12-18T13:31:08.457Z'
+            // }, {
+            //     id: 2,
+            //     tags: ["Vue", "Spring"],
+            //     postStatus: false,
+            //     viewCount: 105,
+            //     likes: [],
+            //     likeCount: 20,
+            //     title: "최신 Toy Project 스터디원 모집합니다.",
+            //     content: "Vue와 Spring으로 진행하려고 합니다.",
+            //     author: {image: '3j5idn.PNG', nickname: '테스트'},
+            //     createdAt: '2021-12-18T13:31:08.457Z',
+            //     updatedAt: '2021-12-18T13:31:08.457Z'
+            // }];            
+            return response.data;
         } catch (error) {
             console.error(error);
         }

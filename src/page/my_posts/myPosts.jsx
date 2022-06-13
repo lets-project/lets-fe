@@ -5,17 +5,19 @@ import {FaBook} from "react-icons/fa";
 import StudyList from "component/study_list/studyList";
 import userService from "service/user_service";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 import {toast} from "react-toastify";
+import EmptyList from 'component/empty_list/emptyList';
+import LoadingSpinner from "component/loading/loadingSpinner";
 
 
 const MyPosts = (props) => {
     const [postList, setPostList] = useState([]);
-//   const userId = useSelector((state) => state.user.id);
-    const userId = "TEST";
+    const nickname = useSelector((state) => state.user.nickname);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (userId === undefined) {
+        if (nickname === undefined) {
             toast.error("로그인이 필요한 페이지입니다.", {
                 position: "top-right",
                 autoClose: 3000,
@@ -23,10 +25,10 @@ const MyPosts = (props) => {
             navigate("/");
         }
 
-        userService.getUserPostList(userId).then((res) => {
+        userService.getUserPostList(nickname).then((res) => {
             setPostList(res);
         });
-    }, [userId, navigate]);
+    }, [nickname, navigate]);
 
     return (
         <>
@@ -40,7 +42,11 @@ const MyPosts = (props) => {
                                 <span className={styles.text}>작성 목록</span>
                             </div>
                         </section>
-                        <StudyList studyList={postList}></StudyList>
+                        {postList.length === 0 ? ( 
+                            <span className={styles.text}>앗! 글이 아직 없네요.</span>
+                        ) : (
+                            <StudyList studyList={postList}/>
+                        )}
                     </main>
                 </div>
             </section>

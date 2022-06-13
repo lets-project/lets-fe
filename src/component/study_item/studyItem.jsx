@@ -6,7 +6,6 @@ import {FaRegCommentDots, FaRegEye} from "react-icons/fa";
 const StudyItem = ({study}) => {
     const studyLang = [];
     const navigate = useNavigate();
-    console.log(study);
     const displayType = study.status == "RECRUITING" ? styles.open : styles.closed;
 
     for (let i = 0; i < study.tags.length; i++) {

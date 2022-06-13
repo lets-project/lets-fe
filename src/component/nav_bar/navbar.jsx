@@ -5,7 +5,9 @@ import LoginUser from "component/login_user/loginUser";
 import LoginModal from "../login_modal/loginModal";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import { clearUser, fetchUserByRefreshToken } from "store/user";
 import {setModalVisible} from "../../store/loginStep";
+import { toast } from "react-toastify";
 
 const Navbar = React.memo((props) => {
     const dispatch = useDispatch();
@@ -43,19 +45,19 @@ const Navbar = React.memo((props) => {
     };
 
     useEffect(() => {
-        if (user.id) {
-            // User refresh token을 이용해서 유저정보 얻어옴
-            // navigate("/");
-            // dispatch(clearUser()); // 유저 초기화
-            // toast.error("로그인이 만료 되었어요!", {
-            // position: "top-right",
-            // autoClose: 3000,
-            // });
-            
-            // 실패했을때 에러처리 필요
-            // });
-            console.log('test');
-            console.log(user);
+        if (user.nickname) {
+          // page refresh후 갱신
+            dispatch(fetchUserByRefreshToken()).then((response) => {
+            // 유저 nickname 존재시 refresh token을 이용해서 유저정보 얻어옴
+            console.log(response);
+            if (response.meta.requestStatus !== "fulfilled") {
+                navigate("/");
+                dispatch(clearUser()); // 유저 초기화
+                toast.error("로그인이 만료 되었어요!", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
+            }});
         }
     }, [dispatch, navigate, user.id]);
 

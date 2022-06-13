@@ -48,7 +48,8 @@ const fetchUserById = createAsyncThunk(
     fetchUserByIdAction,
     async (userData, thunkAPI) => {
         const response = await authService.login(userData.socialLoginId, userData.authProvider);
-        const accessToken = response.accessToken;
+       
+        const accessToken = response.data.accessToken;
 
         // header에 access token 설정
         httpClient.defaults.headers.common[
@@ -66,7 +67,7 @@ const fetchUserByRefreshToken = createAsyncThunk(
     async (thunkAPI) => {
         const response = await authService.getUserInfo();
 
-        const accessToken = response.accessToken;
+        const accessToken = response.data.accessToken;
         const userInfo = {
             nickname: response.nickname
         };
