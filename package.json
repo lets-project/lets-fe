@@ -60,6 +60,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "react-cookie": "^4.1.1",
     "react-kakao-login": "^2.1.0"
   }
 }

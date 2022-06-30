@@ -37,7 +37,7 @@ const Navbar = React.memo((props) => {
         dispatch(setModalVisible(false));
     };
     const handleRegister = () => {
-        if (user.id === undefined) {
+        if (user.nickname === undefined) {
             openModal();
             return;
         }
