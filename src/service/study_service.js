@@ -57,6 +57,7 @@ class Study {
             console.error(e);
         }
     };
+    
     register = async ({title, content, language}) => {
         try {
             const response = await this.study.post('posts', {
