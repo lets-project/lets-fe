@@ -19,7 +19,7 @@ const writePost = createAsyncThunk(
       content,
       tags: newLanguages,
     });
-    return response.status;
+    return response;
   }
 );
 

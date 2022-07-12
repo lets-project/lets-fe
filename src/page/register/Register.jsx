@@ -8,6 +8,7 @@ import LikeLanguages from "component/like_languages/likeLanguages";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { modifyPost, writePost } from "store/write";
+import { isFulfilled } from "@reduxjs/toolkit";
 
 function Register() {
   const [head, setHead] = useState("");
@@ -150,12 +151,13 @@ function Register() {
                     language: likeLanguages,
                   })
                 ).then((response) => {
-                  console.log("respoonse");
-                  console.log(response);
-                  toast.success("글 작성이 완료되었어요!", {
-                    position: "top-right",
-                    autoClose: 3000,
-                  });
+                  if (response.type == writePost.fulfilled)
+                    toast.success("글 작성이 완료되었어요!", {
+                      position: "top-right",
+                      autoClose: 3000,
+                    });
+                  const postId = response.payload.data.id;
+                  navigate(`/study/${postId}`);
                 });
               }
             }}
