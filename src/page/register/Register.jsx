@@ -157,7 +157,7 @@ function Register() {
                       autoClose: 3000,
                     });
                   const postId = response.payload.data.id;
-                  navigate(`/study/${postId}`);
+                  // navigate(`/study/${postId}`);
                 });
               }
             }}
