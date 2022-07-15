@@ -139,13 +139,13 @@ class Study {
 
   clickedLikes = async (postId) => {
     try {
-      // const response = await this.study.post(`posts/${studyId}/likes`);
-      const response = {
-        data: {
-          likeCount: 1,
-          likePostStatus: "ACTIVE",
-        },
-      };
+      const response = await this.study.post(`posts/${postId}/likes`);
+      // const response = {
+      //   data: {
+      //     likeCount: 1,
+      //     likePostStatus: "ACTIVE",
+      //   },
+      // };
       return response;
     } catch (error) {
       console.error(error);
