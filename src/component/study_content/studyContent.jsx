@@ -36,6 +36,8 @@ const StudyContent = ({ id }) => {
   const user = useSelector((state) => state.user);
   const read = useSelector((state) => state.read);
 
+  console.log("TEST");
+  console.log(user);
   console.log(read);
 
   const handleDelete = async (id) => {
@@ -70,7 +72,18 @@ const StudyContent = ({ id }) => {
           cursor="pointer"
           onClick={handleBack}
         />
+        {user.nickname === read.post.nickname && (
+          <StudyButtons
+            navigate={navigate}
+            dispatch={dispatch}
+            handleEdit={handleEdit}
+            handleDelete={() => handleDelete(id)}
+            handleEnd={handleEnd}
+            postState={read.post.postStatus}
+          />
+        )}
         <div className={styles.title}>{read.post.title}</div>
+
         <div className={styles.userAndDate}>
           <div className={styles.user}>
             <img
@@ -84,16 +97,7 @@ const StudyContent = ({ id }) => {
             {formatDate(read.post.createdDate)}
           </div>
         </div>
-        {user.nickname === read.nickname && (
-          <StudyButtons
-            navigate={navigate}
-            dispatch={dispatch}
-            handleEdit={handleEdit}
-            handleDelete={() => handleDelete(id)}
-            handleEnd={handleEnd}
-            postState={read.post.postStatus}
-          />
-        )}
+
         <RecommendPost />
 
         <StudyLanguage tags={read.post.tags}></StudyLanguage>
