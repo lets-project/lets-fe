@@ -13,6 +13,7 @@ import { isFulfilled } from "@reduxjs/toolkit";
 function Register() {
   const [head, setHead] = useState("");
   const [body, setBody] = useState("");
+  const [isPosting, setIsPosting] = useState(false);
   const [likeLanguages, setLikeLanguages] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -63,6 +64,10 @@ function Register() {
         position: "top-right",
         autoClose: 3000,
       });
+      return false;
+    }
+
+    if (isPosting) {
       return false;
     }
     return true;
@@ -128,6 +133,8 @@ function Register() {
                 return;
               }
 
+              setIsPosting(true);
+
               if (postId) {
                 dispatch(
                   modifyPost({
@@ -141,6 +148,7 @@ function Register() {
                     position: "top-right",
                     autoClose: 3000,
                   });
+                  navigate(`/study/${postId}`);
                 });
               } else {
                 dispatch(
@@ -155,8 +163,13 @@ function Register() {
                       position: "top-right",
                       autoClose: 3000,
                     });
-                  const postId = response.payload.data.id;
-                  // navigate(`/study/${postId}`);
+                  setTimeout(
+                    function () {
+                      const postId = response.payload.data.id;
+                      navigate(`/study/${postId}`);
+                    }.bind(this),
+                    1000
+                  );
                 });
               }
             }}
