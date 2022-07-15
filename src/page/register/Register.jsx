@@ -143,7 +143,6 @@ function Register() {
                   });
                 });
               } else {
-                console.log(writePost);
                 dispatch(
                   writePost({
                     title: head,
