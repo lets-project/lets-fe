@@ -36,10 +36,6 @@ const StudyContent = ({ id }) => {
   const user = useSelector((state) => state.user);
   const read = useSelector((state) => state.read);
 
-  console.log("TEST");
-  console.log(user);
-  console.log(read);
-
   const handleDelete = async (id) => {
     await studyService.deleteStudy(id);
     document.body.style.overflow = "auto";
@@ -72,17 +68,20 @@ const StudyContent = ({ id }) => {
           cursor="pointer"
           onClick={handleBack}
         />
-        {user.nickname === read.post.nickname && (
-          <StudyButtons
-            navigate={navigate}
-            dispatch={dispatch}
-            handleEdit={handleEdit}
-            handleDelete={() => handleDelete(id)}
-            handleEnd={handleEnd}
-            postState={read.post.postStatus}
-          />
-        )}
-        <div className={styles.title}>{read.post.title}</div>
+
+        <div className={styles.userAndDate}>
+          <div className={styles.title}>{read.post.title}</div>
+          {user.nickname === read.post.nickname && (
+            <StudyButtons
+              navigate={navigate}
+              dispatch={dispatch}
+              handleEdit={handleEdit}
+              handleDelete={() => handleDelete(id)}
+              handleEnd={handleEnd}
+              postState={read.post.postStatus}
+            />
+          )}
+        </div>
 
         <div className={styles.userAndDate}>
           <div className={styles.user}>

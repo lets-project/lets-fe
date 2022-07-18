@@ -104,12 +104,12 @@ class Study {
   };
 
   // 신규 댓글 등록
-  registerComment = async ({ id, content }) => {
+  registerComment = async ({ postId, content }) => {
     try {
-      // const response = await this.study.post(`posts/${id}/comments`, {
-      //   content: content,
-      // });
-      // return response;
+      const response = await this.study.post(`posts/${postId}/comments`, {
+        content: content,
+      });
+      return response;
     } catch (error) {
       console.error(error);
     }
@@ -118,10 +118,10 @@ class Study {
   // 댓글 수정
   modifyComment = async ({ postId, id, content }) => {
     try {
-      // const response = await this.study.put(`posts/${postId}/comments/${id}`, {
-      //   content,
-      // });
-      // return response;
+      const response = await this.study.put(`posts/${postId}/comments/${id}`, {
+        content,
+      });
+      return response;
     } catch (error) {
       console.log(error.response);
       return error.response.status;
@@ -131,7 +131,7 @@ class Study {
   // 댓글 삭제
   deleteComment = async ({ postId, id }) => {
     try {
-      // await this.study.delete(`posts/${postId}comments/${id}`);
+      await this.study.delete(`posts/${postId}/comments/${id}`);
     } catch (error) {
       console.error(error);
     }
@@ -140,12 +140,6 @@ class Study {
   clickedLikes = async (postId) => {
     try {
       const response = await this.study.post(`posts/${postId}/likes`);
-      // const response = {
-      //   data: {
-      //     likeCount: 1,
-      //     likePostStatus: "ACTIVE",
-      //   },
-      // };
       return response;
     } catch (error) {
       console.error(error);
