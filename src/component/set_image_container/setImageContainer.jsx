@@ -13,7 +13,7 @@ const SetImageContainer = (props) => {
   const [userImage, setUserImage] = useState(null);
 
   const handleSignUp = async () => {
-    const nickname = loginStep.nickName;
+    const nickname = loginStep.nickname;
     const socialLoginId = loginStep.socialLoginId;
     const tags = loginStep.tags;
     const authProvider = loginStep.authProvider;
@@ -22,9 +22,7 @@ const SetImageContainer = (props) => {
       if (userImage) {
         const dataIndex = userImage.indexOf(",") + 1;
         const base64 = userImage.substring(dataIndex, userImage.length);
-        console.log(userImage);
         profile = base64;
-        console.log(base64);
       }
     } else {
       profile = "PUBLIC";

@@ -10,10 +10,10 @@ class User {
   }
 
   // id를 이용해 사용자 정보를 조회합니다.
-  getUserInfo = async (id) => {
+  getUserInfo = async () => {
     try {
-      const user = await this.user.get(`users/${id}`);
-      return user;
+      const user = await this.user.get(`users/setting`);
+      return user.data;
     } catch (error) {
       console.error(error);
     }
@@ -47,9 +47,9 @@ class User {
 
   // 사용자 정보를 수정합니다.
   // 닉네임이 변경될 경우 AccessToken을 다시 설정해야 합니다.
-  modifyUserInfo = async (id, userData) => {
+  modifyUserInfo = async (data) => {
     try {
-      const user = await this.user.patch(`users/${id}`, userData);
+      const user = await this.user.patch(`users/setting`, data);
       return {
         user,
         modifySuccess: true,
