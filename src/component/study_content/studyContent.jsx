@@ -97,7 +97,7 @@ const StudyContent = ({ id }) => {
           </div>
         </div>
 
-        <RecommendPost />
+        <RecommendPost id={read.post.id} tags={read.post.tags} />
 
         <StudyLanguage tags={read.post.tags}></StudyLanguage>
       </section>
