@@ -10,7 +10,7 @@ const RecommendPost = ({ id, tags }) => {
   useEffect(async () => {
     const response = await studyService.getRecommendedPost(id, tags);
     setRecommendPostList(response);
-  });
+  }, [nickname]);
 
   return (
     <div className="TotalWrapper">
