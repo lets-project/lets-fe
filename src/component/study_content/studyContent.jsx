@@ -87,7 +87,11 @@ const StudyContent = ({ id }) => {
           <div className={styles.user}>
             <img
               className={styles.userImg}
-              src={read.post.userImagePath}
+              src={
+                read.post.userImagePath == null
+                  ? "/images/logo/lets.png"
+                  : read.post.userImagePath
+              }
               alt="userImg"
             />
             <div className={styles.userName}>{read.post.nickname}</div>
