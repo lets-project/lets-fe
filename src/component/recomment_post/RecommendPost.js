@@ -29,7 +29,11 @@ const RecommendPost = ({ id, tags }) => {
         <div className="recommendPostListWrapper">
           {recommendPostList.map((v, i) => {
             return (
-              <RecommendPostLi i={i + 1} title={v.title}></RecommendPostLi>
+              <RecommendPostLi
+                id={v.id}
+                i={i + 1}
+                title={v.title}
+              ></RecommendPostLi>
             );
           })}
         </div>
