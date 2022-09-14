@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import SetImage from "../set_image/setImage";
 import { useDispatch, useSelector } from "react-redux";
-import { nextStep } from "../../store/loginStep";
-import studyService from "../../service/study_service";
+import { clearStep, nextStep } from "../../store/loginStep";
 import { addUserNickname } from "../../store/user";
 import { toast } from "react-toastify";
 
@@ -44,6 +43,7 @@ const SetImageContainer = (props) => {
           position: "top-right",
           autoClose: 3000,
         });
+        dispatch(clearStep());
       }
     });
   };
