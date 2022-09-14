@@ -94,7 +94,7 @@ const addUserNickname = createAsyncThunk(
       "Authorization"
     ] = `Bearer ${accessToken}`;
 
-    return userInfo;
+    return response.data;
   }
 );
 
@@ -132,6 +132,7 @@ const userSlice = createSlice({
     [addUserNickname.fulfilled]: (state, { payload }) => ({
       ...state,
       nickname: payload.nickname,
+      profile: payload.profile,
     }),
 
     [modifyUserInfo.fulfilled]: (state, { payload }) => ({
