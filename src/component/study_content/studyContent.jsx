@@ -37,13 +37,23 @@ const StudyContent = ({ id }) => {
   const read = useSelector((state) => state.read);
 
   const handleDelete = async (id) => {
-    await studyService.deleteStudy(id);
+    await studyService
+      .deleteStudy(id)
+      .then(() => {
+        toast.success("글 삭제가 완료되었어요!", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error("글 삭제가 실패하였습니다. 나중에 다시 시도해주세요", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      });
+
     document.body.style.overflow = "auto";
-    toast.success("글 삭제가 완료되었어요!", {
-      position: "top-right",
-      autoClose: 3000,
-    });
-    navigate("/");
   };
 
   const handleEnd = async (editValue) => {

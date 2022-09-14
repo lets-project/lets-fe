@@ -100,6 +100,7 @@ class Study {
       await this.study.delete(`posts/${id}`);
     } catch (error) {
       console.error(error);
+      throw error;
     }
   };
 
