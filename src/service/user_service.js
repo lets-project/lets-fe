@@ -63,9 +63,9 @@ class User {
   };
 
   // 회원 탈퇴
-  deleteUser = async (id) => {
+  deleteUser = async () => {
     try {
-      await this.user.delete(`users/${id}`);
+      await this.user.post(`auth/signout`);
       return true;
     } catch (error) {
       console.error(error);

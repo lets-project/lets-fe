@@ -113,7 +113,7 @@ const SettingContainer = (props) => {
 
   // 회원 탈퇴
   const onSignOutClick = async (e) => {
-    const deleteResult = userService.deleteUser(user.id);
+    const deleteResult = userService.deleteUser();
     if (deleteResult) {
       toast.success("회원 탈퇴가 완료되었어요!", {
         position: "top-right",
