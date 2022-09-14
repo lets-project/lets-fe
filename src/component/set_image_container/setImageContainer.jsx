@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SetImage from "../set_image/setImage";
 import { useDispatch, useSelector } from "react-redux";
 import { clearStep, nextStep } from "../../store/loginStep";
-import { addUserNickname } from "../../store/user";
+import { addUserNickname, fetchUserById } from "../../store/user";
 import { toast } from "react-toastify";
 
 const SetImageContainer = (props) => {
@@ -37,13 +37,28 @@ const SetImageContainer = (props) => {
       })
     ).then((response) => {
       if (response.type == addUserNickname.fulfilled) {
-        dispatch(nextStep());
+        dispatch(
+          fetchUserById({
+            socialLoginId: socialLoginId,
+            authProvider: authProvider,
+          })
+        ).then((response) => {
+          if (response.type == fetchUserById.fulfilled) {
+            dispatch(nextStep());
+          } else {
+            dispatch(clearStep());
+            toast("Login error please try later.", {
+              position: "top-right",
+              autoClose: 3000,
+            });
+          }
+        });
       } else {
+        dispatch(clearStep());
         toast("Sign up error please try later.", {
           position: "top-right",
           autoClose: 3000,
         });
-        dispatch(clearStep());
       }
     });
   };

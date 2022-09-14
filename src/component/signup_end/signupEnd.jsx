@@ -8,7 +8,6 @@ const SignupEnd = ({ handleClose }) => {
 
   const signupEnd = () => {
     dispatch(clearStep());
-    console.log(loginStep);
     handleClose();
   };
 

@@ -88,12 +88,6 @@ const addUserNickname = createAsyncThunk(
   addUserNicknameAction,
   async (userInfo, thunkAPI) => {
     const response = await authService.signUp(userInfo);
-    const accessToken = response.data.accessToken;
-
-    httpClient.defaults.headers.common[
-      "Authorization"
-    ] = `Bearer ${accessToken}`;
-
     return response.data;
   }
 );
