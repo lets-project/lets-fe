@@ -4,7 +4,7 @@ import studyService from "../service/study_service";
 /* 
 
 editor 상태를 관리하는 redux store 입니다.
-title은 제목, content 내용, languages는 사용 언어를 담고 있습니다.
+title은 제목, content 내용, tags 사용 언어를 담고 있습니다.
 
 */
 const writePostAction = createAction("write/writePost");
@@ -12,8 +12,8 @@ const modifyPostAction = createAction("write/modifyPost");
 
 const writePost = createAsyncThunk(
   writePostAction,
-  async ({ title, content, language }, thunkAPI) => {
-    const newLanguages = language.map((item) => item.value);
+  async ({ title, content, tags }, thunkAPI) => {
+    const newLanguages = tags;
     const response = await studyService.register({
       title,
       content,
@@ -25,14 +25,8 @@ const writePost = createAsyncThunk(
 
 const modifyPost = createAsyncThunk(
   modifyPostAction,
-  async ({ postId, title, content, language }, thunkAPI) => {
-    const new_lang = language.map((item) => item.value);
-    const response = await studyService.modify(
-      postId,
-      title,
-      content,
-      new_lang
-    );
+  async ({ postId, title, content, tags }, thunkAPI) => {
+    const response = await studyService.modify(postId, title, content, tags);
 
     return response.status;
   }
@@ -41,7 +35,7 @@ const modifyPost = createAsyncThunk(
 const initialState = {
   title: "",
   content: "",
-  language: [],
+  tags: [],
   post: undefined,
   postError: undefined,
   postId: undefined,
@@ -56,9 +50,9 @@ const writeSlice = createSlice({
       [key]: value,
     }),
 
-    changeLanguage: (state, { payload: language }) => ({
+    changeLanguage: (state, { payload: tags }) => ({
       ...state,
-      language,
+      tags,
     }),
 
     clearField: (state) => initialState,
@@ -67,7 +61,7 @@ const writeSlice = createSlice({
       ...state,
       title: post.title,
       content: post.content,
-      language: post.language,
+      tags: post.tags,
       postId: post.id,
     }),
   },

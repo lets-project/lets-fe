@@ -61,6 +61,7 @@ const StudyContent = ({ id }) => {
   };
 
   const handleEdit = (dispatch, navigate) => {
+    console.log(read.post);
     dispatch(setPost(read.post));
     navigate("/register");
   };

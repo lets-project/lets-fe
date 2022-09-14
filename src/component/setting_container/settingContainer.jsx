@@ -32,8 +32,6 @@ const SettingContainer = (props) => {
       return;
     }
     setLikeLanguages(userInfo.tags);
-    console.log(user);
-    console.log(userInfo);
     if (user.nickname === undefined) {
       toast.error("로그인이 필요한 페이지입니다.", {
         position: "top-right",
@@ -52,13 +50,7 @@ const SettingContainer = (props) => {
     setShowPopup((state) => !state);
   };
 
-  if (likeLanguages.length > 0 && !likeLanguages[0].hasOwnProperty("value")) {
-    const userLanguage = likeLanguages.map((obj) => ({
-      value: obj,
-      label: languageList.find((element) => element.value === obj).label,
-    }));
-    setLikeLanguages(userLanguage);
-  }
+  setLikeLanguages(likeLanguages);
 
   // 변경 완료 버튼
   const onCompleteClick = async () => {
@@ -74,7 +66,7 @@ const SettingContainer = (props) => {
       });
     } else {
       let userData = {
-        tags: likeLanguages.map((element) => element.value),
+        tags: likeLanguages,
       };
 
       //닉네임 변경

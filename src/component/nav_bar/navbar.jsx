@@ -16,17 +16,6 @@ const Navbar = React.memo((props) => {
   const loginStep = useSelector((state) => state.loginStep);
 
   const user = useSelector((state) => state.user); // 저장된 유저정보 가져옴
-  // todo login modal
-  // const modalVisible = useSelector((state) => state.loginStep.modalVisible); // Login Modal이 필요한지 가져옴.
-  // const [modalVisible, setModalVisible] = useState(false);
-  // const openModal = () => {
-  //   document.body.style.overflow = "hidden";
-  //   dispatch(setModalVisible(true));
-  // };
-  // const closeModal = () => {
-  //   document.body.style.overflow = "auto";
-  //   dispatch(setModalVisible(false));
-  // }
   const openModal = () => {
     document.body.style.overflow = "hidden";
     dispatch(setModalVisible(true));
@@ -45,10 +34,7 @@ const Navbar = React.memo((props) => {
 
   useEffect(() => {
     if (user.nickname) {
-      // page refresh후 갱신
       dispatch(fetchUserByRefreshToken()).then((response) => {
-        // 유저 nickname 존재시 refresh token을 이용해서 유저정보 얻어옴
-        console.log(response);
         if (response.meta.requestStatus !== "fulfilled") {
           navigate("/");
           dispatch(clearUser()); // 유저 초기화

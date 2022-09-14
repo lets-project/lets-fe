@@ -71,12 +71,12 @@ class Study {
     }
   };
 
-  modify = async (id, title, content, language) => {
+  modify = async (id, title, content, tags) => {
     try {
       const response = await this.study.put(`posts/${id}`, {
         title,
         content,
-        language,
+        tags,
       });
       return response;
     } catch (error) {

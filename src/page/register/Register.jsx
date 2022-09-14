@@ -18,11 +18,11 @@ function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { title, content, language, post, postError, postId } = useSelector(
+  const { title, content, tags, post, postError, postId } = useSelector(
     ({ write }) => ({
       title: write.title,
       content: write.content,
-      language: write.language,
+      tags: write.tags,
       post: write.post,
       postError: write.postError,
       postId: write.postId,
@@ -34,7 +34,8 @@ function Register() {
     if (mounted.current) return;
     mounted.current = true;
     setHead(title);
-    setLikeLanguages(language);
+    setBody(content);
+    setLikeLanguages(tags);
     document.querySelector(".ql-editor").innerHTML = content;
   }, [content]);
 
@@ -122,13 +123,6 @@ function Register() {
           <button
             className="registerButton"
             onClick={() => {
-              const html = document.querySelector(".ql-editor").innerHTML;
-              const data = {
-                title: title,
-                content: html,
-                tags: likeLanguages.map((element) => element.value),
-              };
-
               if (!checkValidity()) {
                 return;
               }
@@ -139,9 +133,9 @@ function Register() {
                 dispatch(
                   modifyPost({
                     postId,
-                    head,
-                    body,
-                    likeLanguages,
+                    title: head,
+                    content: body,
+                    tags: likeLanguages,
                   })
                 ).then((response) => {
                   toast.info("글 수정이 완료되었어요!", {
@@ -155,7 +149,7 @@ function Register() {
                   writePost({
                     title: head,
                     content: body,
-                    language: likeLanguages,
+                    tags: likeLanguages,
                   })
                 ).then((response) => {
                   if (response.type == writePost.fulfilled)
