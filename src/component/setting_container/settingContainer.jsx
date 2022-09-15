@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import languageList from "common/languageList";
 import userService from "service/user_service";
-import studyService from "service/study_service";
 import { clearUser } from "store/user";
 import { clearStep } from "store/loginStep";
-import { modifyUserInfo } from "store/user";
 import Setting from "page/setting/setting";
+import { modifyUserInfo } from "../../store/user";
 
 const SettingContainer = (props) => {
   const user = useSelector((state) => state.user);
@@ -50,8 +48,6 @@ const SettingContainer = (props) => {
     setShowPopup((state) => !state);
   };
 
-  setLikeLanguages(likeLanguages);
-
   // 변경 완료 버튼
   const onCompleteClick = async () => {
     if (!nickname) {
@@ -72,7 +68,7 @@ const SettingContainer = (props) => {
       //닉네임 변경
       if (nickname !== preNickname) {
         const response = await userService.checkNickname(user.id, nickname);
-        if (response.isExists) {
+        if (!response) {
           toast.info("닉네임이 중복 되었어요!", {
             position: "top-right",
             autoClose: 3000,
@@ -92,13 +88,19 @@ const SettingContainer = (props) => {
       } else {
         userData.profile = "KEEP";
       }
-
-      userService.modifyUserInfo(userData).then((response) => {
-        toast.success("변경이 완료되었어요!", {
-          position: "top-right",
-          autoClose: 3000,
-        });
-        navigate("/");
+      dispatch(modifyUserInfo(userData)).then((response) => {
+        if (response.type == modifyUserInfo.fulfilled) {
+          toast.success("변경이 완료되었어요!", {
+            position: "top-right",
+            autoClose: 3000,
+          });
+          navigate("/");
+        } else {
+          toast.error("오류가 발생했습니다. 다시 시도해주세요", {
+            position: "top-right",
+            autoClose: 3000,
+          });
+        }
       });
     }
   };

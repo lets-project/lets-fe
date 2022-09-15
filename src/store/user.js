@@ -25,21 +25,9 @@ const modifyUserInfoAction = createAction("user/modifyUserInfo");
 // 사용자 정보를 수정하고 access token을 설정합니다.
 const modifyUserInfo = createAsyncThunk(
   modifyUserInfoAction,
-  async (userData, { rejectWithValue }) => {
-    const response = await userService.modifyUserInfo(userData.id, userData);
-
-    // 정보 수정 성공시에만 access token 설정
-    if (response.modifySuccess) {
-      const accessToken = response.user.data.accessToken;
-      // header에 access token 설정
-      httpClient.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${accessToken}`;
-    } else {
-      return rejectWithValue(response.modifySuccess);
-    }
-
-    return response.user.data;
+  async (userData) => {
+    const response = await userService.modifyUserInfo(userData);
+    return response;
   }
 );
 
@@ -132,6 +120,7 @@ const userSlice = createSlice({
     [modifyUserInfo.fulfilled]: (state, { payload }) => ({
       ...state,
       nickname: payload.nickname,
+      profile: payload.profile,
     }),
 
     [modifyUserInfo.rejected]: (state, { payload }) => {

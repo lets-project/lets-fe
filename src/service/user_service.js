@@ -49,16 +49,11 @@ class User {
   // 닉네임이 변경될 경우 AccessToken을 다시 설정해야 합니다.
   modifyUserInfo = async (data) => {
     try {
-      const user = await this.user.patch(`users/setting`, data);
-      return {
-        user,
-        modifySuccess: true,
-      };
+      const response = await this.user.patch(`users/setting`, data);
+      return response.data;
     } catch (error) {
-      return {
-        user: null,
-        modifySuccess: false,
-      };
+      console.log(error);
+      return error;
     }
   };
 
@@ -85,18 +80,6 @@ class User {
     try {
       const response = await this.user.get(`users/myPosts/`);
       return response.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  submitFeedback = async ({ rating, content }) => {
-    try {
-      const response = await this.user.post(`feedback`, {
-        rating,
-        content,
-      });
-      return response;
     } catch (error) {
       console.error(error);
     }
