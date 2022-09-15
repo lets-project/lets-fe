@@ -27,7 +27,7 @@ const SetNicknameContainer = (props) => {
     }
 
     const response = await userService.checkNickname(userId, nickname);
-    if (!response.success) {
+    if (!response) {
       toast.info("닉네임이 중복 되었어요!", {
         position: "top-right",
         autoClose: 3000,
