@@ -84,11 +84,9 @@ class Study {
     }
   };
 
-  editPostStatus = async (id, postStatus) => {
+  changePostStatus = async (id) => {
     try {
-      const response = await this.study.patch(`posts/${id}`, {
-        postStatus,
-      });
+      const response = await this.study.post(`posts/${id}/status`);
       return response;
     } catch (error) {
       console.error(error);

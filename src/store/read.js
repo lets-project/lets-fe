@@ -28,40 +28,8 @@ const initialState = {
 const readPostAction = createAction("read/readPost");
 
 const readPost = createAsyncThunk(readPostAction, async (id, thunkAPI) => {
-  // todo 데이터 받아오는 것 확인하고 Study content 의 예시코드 제거
   const response = await studyService.getDetail(id);
   return response.data;
-
-  // return {
-  //     "id": 1,
-  //     "nickname": "TEST Nick Name",
-  //     "createdTime": "2022-02-02T22:49:29.7294406",
-  //     "userImagePath": "https://clonehola.herokuapp.com/images/logo/lets.png",
-  //     "likePostStatus": "INACTIVE",
-  //     "likeCount": 1,
-  //     "viewCount": 2,
-  //     "tags": [
-  //         "spring",
-  //         "nodejs"
-  //     ],
-  //     "postStatus": "RECRUITING",
-  //     "title": "title1",
-  //     "content": "content1",
-  //     "comments": [{
-  //         "id": 1,
-  //         "nickname": "y2",
-  //         "userImagePath": "https://clonehola.herokuapp.com/images/logo/lets.png",
-  //         "content": "comment1",
-  //         "createdTime": "2022-02-02T22:49:29.7294406"
-  //     },
-  //         {
-  //             "id": 2,
-  //             "nickname": "ttest",
-  //             "userImagePath": "https://clonehola.herokuapp.com/images/logo/lets.png",
-  //             "content": "TEST COMMENT",
-  //             "createdTime": "2022-03-09T17:49:29.7294406"
-  //         }]
-  // };
 });
 
 const readSlice = createSlice({
@@ -83,11 +51,11 @@ const readSlice = createSlice({
         createdDate: payload.createdDate,
         userImagePath: payload.profile,
         comments: payload.comments,
-        islikedPost: payload.likePostStatus == "ACTIVE",
+        likePostStatus: payload.likePostStatus,
         likeCount: payload.likeCount,
         updatedAt: payload.updatedAt,
         viewCount: payload.viewCount,
-        postStatus: payload.postStatus,
+        status: payload.status,
       },
     }),
   },

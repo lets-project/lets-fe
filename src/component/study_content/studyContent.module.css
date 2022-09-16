@@ -143,6 +143,25 @@
     color: #000000;
 }
 
+.closeNotice {
+    position: relative;
+    left: 50%;
+    padding: 0.5rem;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    color: white;
+    background-color: black;
+    border-radius: 4px;
+}
+
+.closed {
+    opacity: 0.4;
+}
+
+.open {
+    opacity: 1;
+}
+
 @media screen and (max-width: 768px) {
     .wrapper {
         width: 100%;

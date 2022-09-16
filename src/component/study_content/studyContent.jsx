@@ -35,6 +35,10 @@ const StudyContent = ({ id }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const read = useSelector((state) => state.read);
+  const isClosed =
+    user.nickname != read.post.nickname && read.post.status == "COMPLETE";
+  const displayType = isClosed ? styles.closed : styles.open;
+
   const handleDelete = async (id) => {
     await studyService
       .deleteStudy(id)
@@ -55,10 +59,6 @@ const StudyContent = ({ id }) => {
     document.body.style.overflow = "auto";
   };
 
-  const handleEnd = async (editValue) => {
-    await studyService.editPostStatus(id, editValue);
-  };
-
   const handleEdit = (dispatch, navigate) => {
     dispatch(setPost(read.post));
     navigate("/register");
@@ -69,7 +69,7 @@ const StudyContent = ({ id }) => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${displayType}`}>
       <section className={styles.postHeader}>
         <FaArrowLeft
           size="30"
@@ -86,7 +86,7 @@ const StudyContent = ({ id }) => {
               dispatch={dispatch}
               handleEdit={handleEdit}
               handleDelete={() => handleDelete(id)}
-              handleEnd={handleEnd}
+              postId={read.post.id}
               status={read.post.status}
             />
           )}
@@ -113,6 +113,8 @@ const StudyContent = ({ id }) => {
         <RecommendPost id={read.post.id} tags={read.post.tags} />
 
         <StudyLanguage tags={read.post.tags}></StudyLanguage>
+
+        {isClosed && <div className={styles.closeNotice}>모집 완료</div>}
       </section>
       <div className={styles.postContentWrapper}>
         <div
@@ -125,7 +127,7 @@ const StudyContent = ({ id }) => {
         <LikesAndViews
           viewCount={read.post.viewCount}
           likeCount={read.post.likeCount}
-          isLikedPost={read.post.likePostStatus}
+          likePostStatus={read.post.likePostStatus}
           postId={read.post.id}
         />
         <div className={styles.postComment}>

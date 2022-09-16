@@ -31,6 +31,7 @@ const RecommendPost = ({ id, tags }) => {
             return (
               <RecommendPostLi
                 id={v.id}
+                key={v.id}
                 i={i + 1}
                 title={v.title}
               ></RecommendPostLi>
