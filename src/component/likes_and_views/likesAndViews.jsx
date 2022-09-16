@@ -7,17 +7,18 @@ import styles from "./likesAndViews.module.css";
 todo
 */
 
-const LikesAndViews = ({ viewCount, likeCount, isLikedPost, postId }) => {
+const LikesAndViews = ({ viewCount, likeCount, likePostStatus, postId }) => {
   const [likeImg, setLikeImg] = useState(
-    isLikedPost ? "heart_filled" : "heart_unfilled"
+    likePostStatus == "ACTIVE" ? "heart_filled" : "heart_unfilled"
   );
   const [likes, setLikes] = useState(likeCount);
-  console.log(isLikedPost);
   const handleLikesClick = async () => {
     const response = await studyService.clickedLikes(postId);
-    isLikedPost = response.data.likePostStatus == "ACTIVE";
-    setLikeImg(isLikedPost ? "heart_filled" : "heart_unfilled");
-    setLikes(isLikedPost ? likes + 1 : likes - 1);
+    if (response) {
+      const isLikedPost = response.data.likePostStatus == "ACTIVE";
+      setLikeImg(isLikedPost ? "heart_filled" : "heart_unfilled");
+      setLikes(isLikedPost ? likes + 1 : likes - 1);
+    }
   };
 
   return (

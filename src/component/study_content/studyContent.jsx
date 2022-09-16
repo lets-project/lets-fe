@@ -35,7 +35,6 @@ const StudyContent = ({ id }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const read = useSelector((state) => state.read);
-
   const handleDelete = async (id) => {
     await studyService
       .deleteStudy(id)
@@ -61,7 +60,6 @@ const StudyContent = ({ id }) => {
   };
 
   const handleEdit = (dispatch, navigate) => {
-    console.log(read.post);
     dispatch(setPost(read.post));
     navigate("/register");
   };
@@ -89,7 +87,7 @@ const StudyContent = ({ id }) => {
               handleEdit={handleEdit}
               handleDelete={() => handleDelete(id)}
               handleEnd={handleEnd}
-              postState={read.post.postStatus}
+              status={read.post.status}
             />
           )}
         </div>
@@ -127,7 +125,7 @@ const StudyContent = ({ id }) => {
         <LikesAndViews
           viewCount={read.post.viewCount}
           likeCount={read.post.likeCount}
-          isLikedPost={read.post.islikedPost}
+          isLikedPost={read.post.likePostStatus}
           postId={read.post.id}
         />
         <div className={styles.postComment}>
